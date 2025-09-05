@@ -10,9 +10,8 @@ RUN upx --best app  # RUN upx --ultra-brute app  # Best 4 production release
 FROM scratch
 WORKDIR /app
 COPY --from=builder /app/app .
-# COPY --from=builder /app/assets ./assets  # If you have configs/assets to copy, do it here:
+# COPY --from=builder /app/assets ./assets
 EXPOSE 64640
 ENTRYPOINT ["./app"]
-# docker build -t app .  # Build
-# docker run --rm app    # Run
-
+# docker build -t app .                     # Build
+# docker run --rm -p64640:64640 app:latest  # Run
