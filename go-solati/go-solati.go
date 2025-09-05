@@ -32,8 +32,6 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
-
-	"github.com/ArdeshirV/book/go-solati/colors"
 )
 
 // Main entry point
@@ -83,7 +81,20 @@ func main() {
 	//mainZipArchive()
 	//mainNext()
 	//mainDesignPattern()
-	mainDataStructures()
+	//mainDataStructures()
+	mainPractice()
+}
+
+func mainPractice() {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println(Error(r))
+		}
+		fmt.Println(Message("Finished"))
+	}()
+
+	a, b := 10, 0
+	fmt.Println(a / b)
 }
 
 func mainDataStructures() {
