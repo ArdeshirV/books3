@@ -93,7 +93,48 @@ func main() {
 func mainRestfulAPI() {
 	fmt.Println(colors.YellowBoldText("RESTful APIs in Go"))
 	//RESTfulAPIs01()
-	RESTfulAPIs02()
+	//RESTfulAPIs02()
+	RESTfulAPIs03()
+}
+
+func RESTfulAPIs03() {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println(colors.RedBoldText(
+				fmt.Sprint("Panic: ", r),
+			))
+		}
+	}()
+	const port = ":64640"
+	const message = "Server running at http://localhost:" + port
+	http.HandleFunc("/users", getUsersX)
+	fmt.Println(colors.MagentaBoldText(message))
+	http.ListenAndServe(":"+port, nil)
+}
+
+type UserX struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+func getUsersX(w http.ResponseWriter, r *http.Request) {
+	users := []UserX{
+		{ID: 1, Name: "Ardeshir"},
+		{ID: 2, Name: "Mohammad"},
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(users)
+}
+
+func handler03(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case http.MethodGet:
+		getUsers(w, r)
+	case http.MethodPost:
+		createUser(w, r)
+	default:
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+	}
 }
 
 func RESTfulAPIs02() {
@@ -111,7 +152,7 @@ func handler02(w http.ResponseWriter, r *http.Request) {
 	case http.MethodPost:
 		createUser(w, r)
 	default:
-    http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 }
 
