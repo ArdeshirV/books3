@@ -11,6 +11,7 @@ import (
 	"reflect"
 	"slices"
 	"strconv"
+	"sync/atomic"
 
 	//"strconv"
 
@@ -115,6 +116,11 @@ func mainPractice() {
 		fmt.Print(i, ", ")
 	}
 	fmt.Println()
+	var x int32 = 1
+	atomic.StoreInt32(&x, 22)
+	fmt.Println(x)
+	atomic.AddInt32(&x, 88)
+	fmt.Println(x)
 
 	fmt.Println(a / b)
 
