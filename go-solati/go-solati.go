@@ -92,7 +92,46 @@ func main() {
 
 func mainRestfulAPI() {
 	fmt.Println(colors.YellowBoldText("RESTful APIs in Go"))
+	//RESTfulAPIs01()
+	RESTfulAPIs02()
+}
 
+func RESTfulAPIs02() {
+	const port = ":64640"
+	const message = "Server running at http://localhost:" + port
+	http.HandleFunc("/usrs", handler02)
+	fmt.Println(colors.MagentaBoldText(message))
+	http.ListenAndServe(":"+port, nil)
+}
+
+func handler02(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case http.MethodGet:
+		getUsers(w, r)
+	case http.MethodPost:
+		createUser(w, r)
+	default:
+    http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+	}
+}
+
+func getUsers(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "GET /users - return list of all users")
+}
+
+func createUser(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "POST /users - Create a new user")
+}
+
+func RESTfulAPIs01() {
+	const port = "64640"
+	http.HandleFunc("/", handler)
+	fmt.Println(colors.MagentaBoldText("Server running at http://localhost:" + port))
+	http.ListenAndServe(":"+port, nil)
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello, REST API in Go!")
 }
 
 func mainPractice() {
