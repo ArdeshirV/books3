@@ -120,9 +120,17 @@ func mainPractice() {
 	atomic.StoreInt32(&x, 22)
 	fmt.Println(x)
 	atomic.AddInt32(&x, 78)
-	fmt.Println(x)
-	fmt.Println(a / b)
+	v := atomic.LoadInt32(&x)
+	fmt.Println("v =", v)
 
+	var q = [][]int{{1, 2, 3}, {5, 6, 7}, {10, 20, 30}}
+	fmt.Println(q)
+
+	m := make(map[string]any)
+	m["name"] = "Ardeshir"
+	fmt.Println(m)
+
+	fmt.Println(a / b)
 	switch b {
 	case 0:
 		fmt.Println(b)
