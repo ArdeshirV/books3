@@ -10,6 +10,7 @@ import (
 	"log"
 	"reflect"
 	"slices"
+	"strconv"
 
 	//"strconv"
 
@@ -96,7 +97,38 @@ func mainPractice() {
 	}()
 
 	a, b := 10, 0
+
+	str := strconv.Itoa(a)
+	fmt.Println(str)
+
+	arr := []int{10, 20, 30, 40, 50, 60}
+	ch := make(chan int)
+	go func() {
+		for i := range len(arr) {
+			arr[i]++
+			ch <- arr[i]
+			time.Sleep(time.Millisecond * 100)
+		}
+		close(ch)
+	}()
+	for i := range ch {
+		fmt.Print(i, ", ")
+	}
+	fmt.Println()
+
 	fmt.Println(a / b)
+
+	switch b {
+	case 0:
+		fmt.Println(b)
+		fallthrough
+	case 3:
+		fmt.Println(3)
+	case 5:
+		fmt.Println(5)
+	default:
+		fmt.Println(a / b)
+	}
 }
 
 func Errorx(text any) string {
