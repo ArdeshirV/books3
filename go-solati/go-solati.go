@@ -32,6 +32,8 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
+
+	"github.com/ArdeshirV/book/go-solati/colors"
 )
 
 // Main entry point
@@ -88,13 +90,21 @@ func main() {
 func mainPractice() {
 	defer func() {
 		if r := recover(); r != nil {
-			fmt.Println(Error(r))
+			fmt.Println(Errorx(r))
 		}
-		fmt.Println(Message("Finished"))
+		fmt.Println(Messagex("Finished"))
 	}()
 
 	a, b := 10, 0
 	fmt.Println(a / b)
+}
+
+func Errorx(text any) string {
+	return colors.RedBoldText(fmt.Sprint(text))
+}
+
+func Messagex(text string) string {
+	return colors.TealBoldText(text)
 }
 
 func mainDataStructures() {
