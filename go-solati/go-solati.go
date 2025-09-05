@@ -105,9 +105,9 @@ func RESTfulAPIs03() {
 			))
 		}
 	}()
-	const port = ":64640"
+	const port = "64640"
 	const message = "Server running at http://localhost:" + port
-	http.HandleFunc("/users", getUsersX)
+	http.HandleFunc("/users", getUsersX1)
 	fmt.Println(colors.MagentaBoldText(message))
 	http.ListenAndServe(":"+port, nil)
 }
@@ -117,7 +117,7 @@ type UserX struct {
 	Name string `json:"name"`
 }
 
-func getUsersX(w http.ResponseWriter, r *http.Request) {
+func getUsersX1(w http.ResponseWriter, r *http.Request) {
 	users := []UserX{
 		{ID: 1, Name: "Ardeshir"},
 		{ID: 2, Name: "Mohammad"},
@@ -138,7 +138,7 @@ func handler03(w http.ResponseWriter, r *http.Request) {
 }
 
 func RESTfulAPIs02() {
-	const port = ":64640"
+	const port = "64640"
 	const message = "Server running at http://localhost:" + port
 	http.HandleFunc("/usrs", handler02)
 	fmt.Println(colors.MagentaBoldText(message))
