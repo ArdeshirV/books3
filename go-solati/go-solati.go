@@ -119,9 +119,8 @@ func mainPractice() {
 	var x int32 = 1
 	atomic.StoreInt32(&x, 22)
 	fmt.Println(x)
-	atomic.AddInt32(&x, 88)
+	atomic.AddInt32(&x, 78)
 	fmt.Println(x)
-
 	fmt.Println(a / b)
 
 	switch b {
