@@ -86,7 +86,13 @@ func main() {
 	//mainNext()
 	//mainDesignPattern()
 	//mainDataStructures()
-	mainPractice()
+	//mainPractice()
+	mainRestfulAPI()
+}
+
+func mainRestfulAPI() {
+	fmt.Println(colors.YellowBoldText("RESTful APIs in Go"))
+
 }
 
 func mainPractice() {
