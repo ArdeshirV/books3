@@ -101,9 +101,34 @@ func mainRestfulAPI() {
 func RESTfulAPIs04() {
 	const port = "64640"
 	const message = "Server running at http://localhost:" + port
-	http.HandleFunc("/users", createUserX)
+	http.HandleFunc("/users", universalHandler)
 	fmt.Println(colors.MagentaBoldText(message))
 	http.ListenAndServe(":"+port, nil)
+}
+
+func universalHandler(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case http.MethodGet:
+		getUsers(w, r)
+	case http.MethodPost:
+		createUser(w, r)
+	case http.MethodPut:
+		updateUser(w, r)
+	case http.MethodDelete:
+		deleteUser(w, r)
+	}
+}
+
+func getUsers(w http.ResponseWriter, r *http.Request) {
+}
+
+func createUser(w http.ResponseWriter, r *http.Request) {
+}
+
+func updateUser(w http.ResponseWriter, r *http.Request) {
+}
+
+func deleteUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func createUserX(w http.ResponseWriter, r *http.Request) {
@@ -149,9 +174,9 @@ func getUsersX1(w http.ResponseWriter, r *http.Request) {
 func handler03(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
-		getUsers(w, r)
+		getUsersZ(w, r)
 	case http.MethodPost:
-		createUser(w, r)
+		createUserZ(w, r)
 	default:
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
@@ -168,19 +193,19 @@ func RESTfulAPIs02() {
 func handler02(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
-		getUsers(w, r)
+		getUsersZ(w, r)
 	case http.MethodPost:
-		createUser(w, r)
+		createUserZ(w, r)
 	default:
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 }
 
-func getUsers(w http.ResponseWriter, r *http.Request) {
+func getUsersZ(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "GET /users - return list of all users")
 }
 
-func createUser(w http.ResponseWriter, r *http.Request) {
+func createUserZ(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "POST /users - Create a new user")
 }
 
