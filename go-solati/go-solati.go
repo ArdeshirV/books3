@@ -94,7 +94,27 @@ func mainRestfulAPI() {
 	fmt.Println(colors.YellowBoldText("RESTful APIs in Go"))
 	//RESTfulAPIs01()
 	//RESTfulAPIs02()
-	RESTfulAPIs03()
+	//RESTfulAPIs03()
+	RESTfulAPIs04()
+}
+
+func RESTfulAPIs04() {
+	const port = "64640"
+	const message = "Server running at http://localhost:" + port
+	http.HandleFunc("/users", createUserX)
+	fmt.Println(colors.MagentaBoldText(message))
+	http.ListenAndServe(":"+port, nil)
+}
+
+func createUserX(w http.ResponseWriter, r *http.Request) {
+	var user UserX
+	err := json.NewDecoder(r.Body).Decode(&user)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(user)
 }
 
 func RESTfulAPIs03() {
