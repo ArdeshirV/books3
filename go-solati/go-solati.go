@@ -100,10 +100,17 @@ func mainRestfulAPI() {
 
 func RESTfulAPIs04() {
 	const port = "64640"
-	const message = "Server running at http://localhost:" + port
+	const address = "http://localhost:" + port
 	http.HandleFunc("/users", universalHandler)
-	fmt.Println(colors.MagentaBoldText(message))
+	fmt.Printf("\n  %s %s\n\n",
+		colors.MagentaBoldText("Server running at "),
+		colors.BlueBoldText(address))
 	http.ListenAndServe(":"+port, nil)
+}
+
+var users = []User{
+    {ID: 1, Name: "Alice"},
+    {ID: 2, Name: "Bob"},
 }
 
 func universalHandler(w http.ResponseWriter, r *http.Request) {
@@ -120,16 +127,38 @@ func universalHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func getUsers(w http.ResponseWriter, r *http.Request) {
+  w.Header().Set("Content-Type", "application/json")
+  json.NewEncoder(w).Encode(users)
 }
 
 func createUser(w http.ResponseWriter, r *http.Request) {
+  var u User
+  if err := json.NewDecoder(r.Body).Decode(&u); err != nil {
+    http.Error(w, err.Error(), http.StatusBadRequest)
+    return
+  }
+  users = append(users, u)
+  w.Header().Set("Content-Type", "application/json")
+  json.NewEncoder(w).Encode(u)
 }
 
 func updateUser(w http.ResponseWriter, r *http.Request) {
+  
 }
 
 func deleteUser(w http.ResponseWriter, r *http.Request) {
+  idStr := r.URL.Query().Get("id")
+  id, _ := strconv.Atoi(idStr)
+  for i, u := range users {
+    if u.ID == id {
+      users = append(users[:i], users[i+1:]...)
+      w.WriteHeader(http.StatusNoContent) // 204 = success, no body
+      return
+    }
+  }
+  http.Error(w, "User not found", http.StatusNotFound)
 }
+
 
 func createUserX(w http.ResponseWriter, r *http.Request) {
 	var user UserX
