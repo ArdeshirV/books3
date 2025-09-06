@@ -123,6 +123,8 @@ func universalHandler(w http.ResponseWriter, r *http.Request) {
 		updateUser(w, r)
 	case http.MethodDelete:
 		deleteUser(w, r)
+  default:
+    http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 }
 
