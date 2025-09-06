@@ -1,6 +1,8 @@
 .env
 CPU.profile
+*.swo
+.*.swo
 *.swp
-*.*.swp
+.*.swp
 go-solati
 
