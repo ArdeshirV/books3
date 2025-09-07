@@ -90,6 +90,10 @@ func main() {
 	mainRestfulAPI()
 }
 
+func HelloWorld() {
+	fmt.Println("Hello, World!")
+}
+
 func mainRestfulAPI() {
 	fmt.Println(colors.YellowBoldText("RESTful APIs in Go"))
 	//RESTfulAPIs01()
