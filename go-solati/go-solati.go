@@ -94,11 +94,18 @@ func main() {
 func HelloWorld() {
 	fmt.Println("Hello, World!")
 	fmt.Println("Hello, World Again!")
-
+	fmt.Println("")
+	fmt.Println("")
+	fmt.Println("")
+	fmt.Println("Hello, HelloWorld")
+	fmt.Println()
+	strings.ToUpper("This is a string")
 	fmt.Println(http.MethodGet)
+	fmt.Println()
 	arr := []int{10, 300, 1, 20, 100, 200, 100, 2, 11, 12, 500, 9}
 	newArr := Sort(arr)
 	fmt.Println(newArr)
+	fmt.Println("")
 }
 
 func Sort[T int](arr []T) []T {
