@@ -92,6 +92,11 @@ func main() {
 
 func HelloWorld() {
 	fmt.Println("Hello, World!")
+	fmt.Println("Hello, World Again!")
+	fmt.Printf("")
+}
+
+func BinarySearc() {
 }
 
 func mainRestfulAPI() {
@@ -864,7 +869,7 @@ func mainPrepare() {
 		colors.Bold, colors.MagentaBold, name, colors.Normal,
 		colors.Bold, colors.MagentaBold, email, colors.Normal)
 
-	result, err = db.Exec("UPDATE users SET email = 'myemail@gmailx.com' WHERE id = 1")
+	_, err = db.Exec("UPDATE users SET email = 'myemail@gmailx.com' WHERE id = 1")
 	if err != nil {
 		panic(err)
 	}
@@ -935,7 +940,19 @@ func (c DataConnection) GetPostgresqlConnection() string {
 	)
 }
 
-func (c DataConnection) GetMySqlConnection() string {
+/*
+	func (c DataConnection) GetMySqlConnection() string {
+		return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
+			c.username,
+			c.password,
+			c.host,
+			c.port,
+			c.database,
+		)
+	}
+*/
+
+func (c DataConnection) GetMariadbConnection() string {
 	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
 		c.username,
 		c.password,
@@ -943,10 +960,6 @@ func (c DataConnection) GetMySqlConnection() string {
 		c.port,
 		c.database,
 	)
-}
-
-func (c DataConnection) GetMariadbConnection() string {
-	return c.GetMySqlConnection()
 }
 
 func GetConnectionStringToMariadb() string {
@@ -1306,7 +1319,7 @@ func mainFiles() {
 	}
 	defer f.Close()
 
-	buff, err := io.ReadAll(f)
+	buff, _ := io.ReadAll(f)
 	fmt.Println(string(buff))
 }
 
@@ -1537,8 +1550,7 @@ func mainReviewChapterOneAndTwo() {
 	fmt.Printf("value = %v, ok = %v\n", value, ok)
 
 	type MyType int
-	var m MyType
-	m = 9
+	m := 9
 	fmt.Println(m)
 
 	type operator = func(int, int) int
@@ -1750,7 +1762,7 @@ in multilines.`)
 	fmt.Println(arrDayNames[day])
 
 	goto next_statement
-	fmt.Println("Khameneee is a dirty pig")
+	//fmt.Println("Khameneee is a dirty pig")
 next_statement:
 	fmt.Println("Yeah we are here")
 
