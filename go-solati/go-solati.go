@@ -87,7 +87,7 @@ func main() {
 	//mainDesignPattern()
 	//mainDataStructures()
 	//mainPractice()
-	HelloWorld()
+	//HelloWorld()
 	mainRestfulAPI()
 }
 
@@ -113,6 +113,7 @@ func Sort[T int](arr []T) []T {
 
 func BinarySearch(arr []int, value int) (index int) {
 	// Implement BinarySearch here:
+	fmt.Println()
 	fmt.Println()
 	return -1
 }
