@@ -101,6 +101,7 @@ func maingRPC01() {
 }
 
 func BinarySearch(arr []int, value int) (key int) {
+
 	return -1
 }
 
@@ -262,7 +263,9 @@ func RESTfulAPIs02() {
 	const message = "Server running at http://localhost:" + port
 	http.HandleFunc("/usrs", handler02)
 	fmt.Println(colors.MagentaBoldText(message))
-	http.ListenAndServe(":"+port, nil)
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
+		panic(err)
+	}
 }
 
 func handler02(w http.ResponseWriter, r *http.Request) {
@@ -277,22 +280,30 @@ func handler02(w http.ResponseWriter, r *http.Request) {
 }
 
 func getUsersZ(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "GET /users - return list of all users")
+	if _, err := fmt.Fprintln(w, "GET /users - return list of all users"); err != nil {
+		panic(err)
+	}
 }
 
 func createUserZ(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "POST /users - Create a new user")
+	if _, err := fmt.Fprintln(w, "POST /users - Create a new user"); err != nil {
+		panic(err)
+	}
 }
 
 func RESTfulAPIs01() {
 	const port = "64640"
 	http.HandleFunc("/", handler)
 	fmt.Println(colors.MagentaBoldText("Server running at http://localhost:" + port))
-	http.ListenAndServe(":"+port, nil)
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
+		panic(err)
+	}
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello, REST API in Go!")
+	if _, err := fmt.Fprintln(w, "Hello, REST API in Go!"); err != nil {
+		panic(err)
+	}
 }
 
 func mainPractice() {
@@ -1104,7 +1115,9 @@ func mainMiddleWareByMUX() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Hello, World!")
-		fmt.Fprint(w, "Hello, World!")
+		if _, err := fmt.Fprint(w, "Hello, World!"); err != nil {
+			panic(err)
+		}
 	})
 
 	middlewares := []MiddlewareFunc{After, Before}
@@ -1114,21 +1127,33 @@ func mainMiddleWareByMUX() {
 		finalHandler = middleware(finalHandler)
 	}
 
-	http.ListenAndServe("localhost:64640", finalHandler)
+	if err := http.ListenAndServe("localhost:64640", finalHandler); err != nil {
+		panic(err)
+	}
 }
 
 func mainNewWebAfterMux() {
 	mux1 := http.NewServeMux()
 	mux1.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "Hello from server mux1")
+		if _, err := fmt.Fprint(w, "Hello from server mux1"); err != nil {
+			panic(err)
+		}
 	})
 
 	mux2 := http.NewServeMux()
 	mux2.HandleFunc("hello", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "hello from server mux 2")
+		if _, err := fmt.Fprint(w, "hello from server mux 2"); err != nil {
+			panic(err)
+		}
 	})
-	go http.ListenAndServe("localhost:64640", mux1)
-	http.ListenAndServe("localhost:64640", mux2)
+	go func() {
+		if err := http.ListenAndServe("localhost:64640", mux1); err != nil {
+			panic(err)
+		}
+	}()
+	if err := http.ListenAndServe("localhost:64640", mux2); err != nil {
+		panic(err)
+	}
 }
 
 func mainNewWebLessonMux() {
@@ -1136,7 +1161,9 @@ func mainNewWebLessonMux() {
 	fmt.Print("\033[1;35mListen and serve: \033[1;34mhttp://", address, colors.Normal)
 
 	mux := new(mymux)
-	http.ListenAndServe(address, mux)
+	if err := http.ListenAndServe(address, mux); err != nil {
+		panic(err)
+	}
 }
 
 type mymux struct{}
@@ -1144,14 +1171,22 @@ type mymux struct{}
 func (m *mymux) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.URL.Path {
 	case "/":
-		fmt.Fprint(w, "<b>/ router</b>")
+		if _, err := fmt.Fprint(w, "<b>/ router</b>"); err != nil {
+			panic(err)
+		}
 	case "/a":
-		fmt.Fprint(w, "<b>/a router</b>")
+		if _, err := fmt.Fprint(w, "<b>/a router</b>"); err != nil {
+			panic(err)
+		}
 	case "/b":
-		fmt.Fprint(w, "<b>/b router</b>")
+		if _, err := fmt.Fprint(w, "<b>/b router</b>"); err != nil {
+			panic(err)
+		}
 	default:
 		w.WriteHeader(http.StatusNotFound)
-		fmt.Fprint(w, "<b>Page not found found 404</b>")
+		if _, err := fmt.Fprint(w, "<b>Page not found found 404</b>"); err != nil {
+			panic(err)
+		}
 	}
 }
 
@@ -1159,11 +1194,15 @@ func mainWebServerByHandleFunc() {
 	address := "localhost:64640"
 	fmt.Print("\033[1;35mListen and serve: \033[1;34mhttp://", address, "\033[0m\n")
 	http.HandleFunc("/", someHandler)
-	http.ListenAndServe(address, nil)
+	if err := http.ListenAndServe(address, nil); err != nil {
+		panic(err)
+	}
 }
 
 func someHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "<b>Server is up and running ...</b>")
+	if _, err := fmt.Fprint(w, "<b>Server is up and running ...</b>"); err != nil {
+		panic(err)
+	}
 }
 
 func mainWebServerBySockets() {
@@ -1193,7 +1232,9 @@ func mainWebServerBySockets() {
 		response += "\r\n"
 		response += body
 
-		fmt.Fprint(conn, response)
+		if _, err := fmt.Fprint(conn, response); err != nil {
+			panic(err)
+		}
 		conn.Close()
 	}
 }
@@ -1220,7 +1261,9 @@ func Get(addr string) (string, string, error) {
 	rt += "Connection: close\r\n"
 	rt += "\r\n"
 
-	fmt.Fprint(conn, rt)
+	if _, err := fmt.Fprint(conn, rt); err != nil {
+		panic(err)
+	}
 	response, err := io.ReadAll(conn)
 	if err != nil {
 		return "", "", err
@@ -1290,7 +1333,9 @@ func mainSockets() {
 		if message == "exit" {
 			return
 		}
-		fmt.Fprint(conn, BYELLOW, message)
+		if _, err := fmt.Fprint(conn, BYELLOW, message); err != nil {
+			panic(err)
+		}
 		fmt.Print(BYELLOW, ">>")
 	}
 }
