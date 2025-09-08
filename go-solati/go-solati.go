@@ -208,7 +208,9 @@ func createUserX(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(user)
+	if err := json.NewEncoder(w).Encode(user); err != nil {
+		panic(err)
+	}
 }
 
 func RESTfulAPIs03() {
