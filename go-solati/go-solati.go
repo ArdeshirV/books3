@@ -106,6 +106,7 @@ func HelloWorld() {
 	newArr := Sort(arr)
 	fmt.Println(newArr)
 	fmt.Println("")
+	fmt.Println("")
 }
 
 func Sort[T int](arr []T) []T {
