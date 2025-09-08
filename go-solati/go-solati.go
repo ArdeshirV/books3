@@ -117,10 +117,6 @@ func gRPC01() {
 	}
 }
 
-func Hello() {
-	fmt.Println("Hello")
-}
-
 type server struct {
 	grpc01.UnimplementedGreeterServer
 }
