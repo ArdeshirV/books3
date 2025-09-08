@@ -225,7 +225,9 @@ func RESTfulAPIs03() {
 	const message = "Server running at http://localhost:" + port
 	http.HandleFunc("/users", getUsersX1)
 	fmt.Println(colors.MagentaBoldText(message))
-	http.ListenAndServe(":"+port, nil)
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
+		panic(err)
+	}
 }
 
 type UserX struct {
@@ -239,7 +241,9 @@ func getUsersX1(w http.ResponseWriter, r *http.Request) {
 		{ID: 2, Name: "Mohammad"},
 	}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(users)
+	if err := json.NewEncoder(w).Encode(users); err != nil {
+		panic(err)
+	}
 }
 
 func handler03(w http.ResponseWriter, r *http.Request) {
