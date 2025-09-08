@@ -91,46 +91,6 @@ func main() {
 	mainRestfulAPI()
 }
 
-func HelloWorld() {
-	fmt.Println("Hello, World!")
-	fmt.Println("Hello, World Again!")
-	fmt.Println("")
-	fmt.Println("")
-	fmt.Println("")
-	fmt.Println("Hello, HelloWorld")
-	fmt.Println()
-	strings.ToUpper("This is a string")
-	fmt.Println(http.MethodGet)
-	fmt.Println()
-	arr := []int{10, 300, 1, 20, 100, 200, 100, 2, 11, 12, 500, 9}
-	newArr := Sort(arr)
-	fmt.Println(newArr)
-	fmt.Println("")
-	fmt.Println("")
-}
-
-func Sort[T int](arr []T) []T {
-	for i := range arr {
-		for j := range i {
-			if arr[i] < arr[j] {
-				arr[i], arr[j] = arr[j], arr[i]
-			}
-		}
-	}
-	return arr
-}
-
-func zz() {
-	fmt.Println()
-	fmt.Println(
-		"Hello, World",
-	)
-	fmt.Println("")
-	fmt.Println()
-	os.Remove("file-name.txt")
-	fmt.Println()
-}
-
 func mainRestfulAPI() {
 	fmt.Println(colors.YellowBoldText("RESTful APIs in Go"))
 	//RESTfulAPIs01()
