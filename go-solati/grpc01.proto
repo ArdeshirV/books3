@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package grpc01;
+
+option go_package = "github.com/ArdeshirV/book/go-solati;grpc01";
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReplay);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReplay {
+  string message = 1;
+}
+
