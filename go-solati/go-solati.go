@@ -551,10 +551,18 @@ func mainZipArchive() {
 	if err != nil {
 		panic(err)
 	}
-	defer zipFile.Close()
+	defer func() {
+		if err := zipFile.Close(); err != nil {
+			panic(err)
+		}
+	}()
 
 	zipWriter := zip.NewWriter(zipFile)
-	defer zipWriter.Close()
+	defer func() {
+		if err := zipWriter.Close(); err != nil {
+			panic(err)
+		}
+	}()
 
 	file, err := zipWriter.Create("test.txt")
 	if err != nil {
@@ -574,7 +582,11 @@ func mainLog() {
 	if err != nil {
 		log.Fatal("Failed to create log file")
 	}
-	defer output.Close()
+	defer func() {
+		if err := output.Close(); err != nil {
+			panic(err)
+		}
+	}()
 	log.SetFlags(log.Lmicroseconds | log.Lshortfile | log.Ldate)
 	log.SetOutput(output)
 	log.Print(colors.Red, "hello", "a", "b", "c", colors.Normal)
@@ -870,7 +882,11 @@ func mainPrepare() {
 	if err != nil {
 		panic(err)
 	}
-	defer db.Close()
+	defer func() {
+		if err := db.Close(); err != nil {
+			panic(err)
+		}
+	}()
 
 	if err = db.Ping(); err != nil {
 		panic(err)
@@ -930,7 +946,11 @@ func mainCreateTableQuery() {
 	if err != nil {
 		panic(err)
 	}
-	defer db.Close()
+	defer func() {
+		if err := db.Close(); err != nil {
+			panic(err)
+		}
+	}()
 
 	if err = db.Ping(); err != nil {
 		panic(err)
@@ -1011,7 +1031,11 @@ func mainMySQLtest() {
 	if err != nil {
 		panic(err)
 	}
-	defer db.Close()
+	defer func() {
+		if err := db.Close(); err != nil {
+			panic(err)
+		}
+	}()
 
 	if err = db.Ping(); err != nil {
 		panic(err)
@@ -1042,7 +1066,11 @@ func mainNewRequest() {
 	if err != nil {
 		panic(err)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if err := resp.Body.Close(); err != nil {
+			panic(err)
+		}
+	}()
 }
 
 func mainNewRequestSolati() {
@@ -1064,7 +1092,11 @@ func mainNewRequestSolati() {
 	if err != nil {
 		panic(err)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if err := resp.Body.Close(); err != nil {
+			panic(err)
+		}
+	}()
 	user := new(User)
 	if err := json.NewDecoder(resp.Body).Decode(user); err != nil {
 		panic(err)
@@ -1246,7 +1278,11 @@ func mainWebServerBySockets() {
 		if _, err := fmt.Fprint(conn, response); err != nil {
 			panic(err)
 		}
-		conn.Close()
+		func() {
+			if err := conn.Close(); err != nil {
+				panic(err)
+			}
+		}()
 	}
 }
 
@@ -1265,7 +1301,11 @@ func Get(addr string) (string, string, error) {
 	if err != nil {
 		panic(err)
 	}
-	defer conn.Close()
+	defer func() {
+		if err := conn.Close(); err != nil {
+			panic(err)
+		}
+	}()
 
 	rt := "GET / HTTP/1.1\r\n"
 	rt += "Host: " + addr + "\r\n"
@@ -1297,7 +1337,11 @@ func mainSockets() {
 	if err != nil {
 		panic(err)
 	}
-	defer listner.Close()
+	defer func() {
+		if err := listner.Close(); err != nil {
+			panic(err)
+		}
+	}()
 
 	fmt.Println("Server started ...")
 
@@ -1333,7 +1377,11 @@ func mainSockets() {
 	if err != nil {
 		panic(err)
 	}
-	defer conn.Close()
+	defer func() {
+		if err := conn.Close(); err != nil {
+			panic(err)
+		}
+	}()
 
 	fmt.Println(BYELLOW, "Connected ...")
 	message := ""
@@ -1353,7 +1401,11 @@ func mainSockets() {
 
 func handleConnection(conn net.Conn, i int) {
 	fmt.Println(BBLUE, "New connections number:", i)
-	defer conn.Close()
+	defer func() {
+		if err := conn.Close(); err != nil {
+			panic(err)
+		}
+	}()
 	buffer := make([]byte, 1024)
 	for {
 		n, err := conn.Read(buffer)
@@ -1386,13 +1438,21 @@ func mainFiles() {
 	if err != nil {
 		panic(err)
 	}
-	f.Close()
+	func() {
+		if err := f.Close(); err != nil {
+			panic(err)
+		}
+	}()
 
 	f, err = os.Open(filename)
 	if err != nil {
 		panic(err)
 	}
-	defer f.Close()
+	defer func() {
+		if err := f.Close(); err != nil {
+			panic(err)
+		}
+	}()
 
 	buff, _ := io.ReadAll(f)
 	fmt.Println(string(buff))
