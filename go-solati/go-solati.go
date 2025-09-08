@@ -87,16 +87,34 @@ func main() {
 	//mainDesignPattern()
 	//mainDataStructures()
 	//mainPractice()
+	HelloWorld()
 	mainRestfulAPI()
 }
 
 func HelloWorld() {
 	fmt.Println("Hello, World!")
 	fmt.Println("Hello, World Again!")
-	fmt.Printf("")
+
+	arr := []int{10, 300, 1, 20, 100, 200, 100, 2, 11, 12, 500, 9}
+	newArr := Sort(arr)
+	fmt.Println(newArr)
 }
 
-func BinarySearc() {
+func Sort[T int](arr []T) []T {
+	for i := range arr {
+		for j := range i {
+			if arr[i] < arr[j] {
+				arr[i], arr[j] = arr[j], arr[i]
+			}
+		}
+	}
+	return arr
+}
+
+func BinarySearch(arr []int, value int) (index int) {
+	// Implement BinarySearch here:
+	fmt.Println()
+	return -1
 }
 
 func mainRestfulAPI() {
