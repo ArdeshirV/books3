@@ -12,6 +12,7 @@ import (
 	"slices"
 	"strconv"
 	"sync/atomic"
+	"weak"
 
 	//"strconv"
 
@@ -94,11 +95,7 @@ func main() {
 
 func maingRPC01() {
 	fmt.Println(colors.YellowBoldText("gRPC zero to hero!"))
-
-}
-
-func BinarySearch(arr []int, value int) (key int) {
-
+	fmt.Println("This text is dark blue")
 }
 
 func mainRestfulAPI() {
