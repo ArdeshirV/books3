@@ -120,8 +120,7 @@ func RESTfulAPIs04() {
 	fmt.Printf("\n  %s %s\n\n",
 		colors.MagentaBoldText("Server running at "),
 		colors.BlueBoldText(address))
-	err := http.ListenAndServe(":"+port, nil)
-	if err != nil {
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		panic(err)
 	}
 }
@@ -181,7 +180,9 @@ func updateUser(w http.ResponseWriter, r *http.Request) {
 		if u.ID == id {
 			users[i].Name = updated.Name
 			w.Header().Set("Content-Type", "application/json")
-			json.NewEncoder(w).Encode(users[i])
+			if err := json.NewEncoder(w).Encode(users[i]); err != nil {
+				panic(err)
+			}
 			return
 		}
 	}
@@ -1028,7 +1029,9 @@ type User struct {
 
 func mainNewRequest() {
 	buf := new(bytes.Buffer)
-	json.NewEncoder(buf).Encode(User{Name: "AmirReza", Age: 28})
+	if err := json.NewEncoder(buf).Encode(User{Name: "AmirReza", Age: 28}); err != nil {
+		panic(err)
+	}
 	req, err := http.NewRequest("POST", "http://jsonplaceholder.typicode.com/posts", buf)
 	if err != nil {
 		panic(err)
@@ -1044,7 +1047,9 @@ func mainNewRequest() {
 
 func mainNewRequestSolati() {
 	buf := new(bytes.Buffer)
-	json.NewEncoder(buf).Encode(User{Name: "AmirReza", Age: 28})
+	if err := json.NewEncoder(buf).Encode(User{Name: "AmirReza", Age: 28}); err != nil {
+		panic(err)
+	}
 	req, err := http.NewRequest(
 		http.MethodPost,
 		"http://jsonplaceholder.typicode.com/posts",
@@ -1061,13 +1066,17 @@ func mainNewRequestSolati() {
 	}
 	defer resp.Body.Close()
 	user := new(User)
-	json.NewDecoder(resp.Body).Decode(user)
+	if err := json.NewDecoder(resp.Body).Decode(user); err != nil {
+		panic(err)
+	}
 	fmt.Println("User ID:", user.ID)
 }
 
 func mainPost() {
 	buff := new(bytes.Buffer)
-	json.NewEncoder(buff).Encode(User{Name: "AmirReza", Age: 28})
+	if err := json.NewEncoder(buff).Encode(User{Name: "AmirReza", Age: 28}); err != nil {
+		panic(err)
+	}
 	resp, err := http.Post(
 		"http://jsonplaceholder.typicode.com/posts",
 		"application/json",
@@ -1077,7 +1086,9 @@ func mainPost() {
 		panic(err)
 	}
 	user := new(User)
-	json.NewDecoder(resp.Body).Decode(user)
+	if err := json.NewDecoder(resp.Body).Decode(user); err != nil {
+		panic(err)
+	}
 	fmt.Println("User ID:", user.ID)
 }
 
@@ -1903,6 +1914,60 @@ func helloFunc() {
 func mainChapterTwo() {
 	fmt.Printf("  Chapter Two: \n\n")
 	fmt.Println("Hello World")
+}
+
+// Main entry point
+func mainX() {
+	defer func() {
+		//waiteForEnter()
+		fmt.Print(NORMAL)
+	}()
+	PerformTitle()
+	mainChapterOne()
+	mainChapterTwo()
+	mainChapterThree()
+	mainReviewChapterOneAndTwo()
+	//mainChannels()
+	mainChannels2()
+	mainChannels3() //
+	UsingRecover()
+	mainANewStepForward()
+	mainAncientAlphabets()
+	mainWriterReader()
+	mainWriterReader2()
+	mainFiles()
+	mainSockets()
+	mainWebBySockets()
+	mainWebServerBySockets()
+	//ainWeb1()
+	mainWebServerByHandleFunc()
+	mainNewWebAfterMux()
+	mainNewWebLessonMux()
+	mainMiddleWareByMUX()
+	mainGet()
+	mainPost()
+	mainNewRequestSolati()
+	mainMySQLtest()
+	//mainCreateTableByQuery()
+	mainPrepare()
+	//mainMongodb()
+	mainReflection()
+	mainReadStruct()
+	mainReflectionNew()
+	mainStandardLib()
+	mainToUpper()
+	mainDateTime()
+	mainContext()
+	mainLog()
+	mainPlugin()
+	mainZipArchive()
+	mainNext()
+	mainDesignPattern()
+	mainDataStructures()
+	mainPractice()
+	//HelloWorld()
+	mainRestfulAPI()
+	maingRPC01()
 }
 
 func PrintTitle() {
