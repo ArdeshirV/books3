@@ -8,7 +8,7 @@ import (
 	"bytes"
 	"container/list"
 	"context"
-	grpc01 "github.com/ArdeshirV/book/go-solat/grpc/github.com/ArdeshirV/book/go-solati"
+	grpc01 "github.com/ArdeshirV/book/go-solati/grpc01"
 	"log"
 	"reflect"
 	"slices"
@@ -42,7 +42,6 @@ import (
 	_ "github.com/lib/pq"
 
 	"github.com/ArdeshirV/book/go-solati/colors"
-	grpc01 "github.com/ArdeshirV/book/go-solati/grpc/github.com/ArdeshirV/book/go-solati"
 )
 
 // Main entry point
