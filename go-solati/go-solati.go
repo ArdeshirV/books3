@@ -8,13 +8,15 @@ import (
 	"bytes"
 	"container/list"
 	"context"
-	"google.golang.org/grpc"
 	grpc01 "grpc/github.com/ArdeshirV/book/go-solati"
 	"log"
 	"reflect"
 	"slices"
 	"strconv"
 	"sync/atomic"
+
+	"google.golang.org/grpc"
+
 	//"weak"
 
 	//"strconv"
@@ -40,6 +42,7 @@ import (
 	_ "github.com/lib/pq"
 
 	"github.com/ArdeshirV/book/go-solati/colors"
+	grpc01 "github.com/ArdeshirV/book/go-solati/grpc/github.com/ArdeshirV/book/go-solati"
 )
 
 // Main entry point
@@ -93,13 +96,38 @@ func main() {
 	//mainPractice()
 	//HelloWorld()
 	//mainRestfulAPI()
-	maingRPC01()
+	maingRPC()
 }
 
-func maingRPC01() {
+func maingRPC() {
 	fmt.Println(colors.YellowBoldText("gRPC zero to hero!"))
-	grpc01.Run()
+	gRPC01()
+}
 
+func gRPC01() {
+	const address = ":50051"
+	lis, err := net.Listen("tcp", address)
+	if err != nil {
+		panic(err)
+	}
+	s := grpc.NewServer()
+	grpc01.RegisterGreeterServer(s, &server{})
+	log.Printf("Server listening on " + address)
+	if err := s.Serve(lis); err != nil {
+		panic(err)
+	}
+}
+
+func Hello() {
+	fmt.Println("Hello")
+}
+
+type server struct {
+	grpc01.UnimplementedGreeterServer
+}
+
+func (s *server) SayHello(ctx context.Context, in *grpc01.HelloRequest) (*grpc01.HelloReplay, error) {
+	return &grpc01.HelloReplay{Message: "Hello " + in.GetName()}, nil
 }
 
 func mainRestfulAPI() {
