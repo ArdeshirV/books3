@@ -8,7 +8,7 @@ import (
 	"bytes"
 	"container/list"
 	"context"
-	grpc01 "grpc/github.com/ArdeshirV/book/go-solati"
+	grpc01 "github.com/ArdeshirV/book/go-solat/grpc/github.com/ArdeshirV/book/go-solati"
 	"log"
 	"reflect"
 	"slices"
