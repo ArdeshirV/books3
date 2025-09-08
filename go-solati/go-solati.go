@@ -96,13 +96,7 @@ func main() {
 
 func maingRPC01() {
 	fmt.Println(colors.YellowBoldText("gRPC zero to hero!"))
-	fmt.Println("This text is dark blue")
-	fmt.Println("Hello, World!")
-}
 
-func BinarySearch(arr []int, value int) (key int) {
-
-	return -1
 }
 
 func mainRestfulAPI() {
@@ -1974,6 +1968,39 @@ func helloFunc() {
 func mainChapterTwo() {
 	fmt.Printf("  Chapter Two: \n\n")
 	fmt.Println("Hello World")
+}
+
+func QuickSort(arr []int) []int {
+	if len(arr) < 2 {
+		return arr
+	}
+	pivot := arr[0]
+	left := make([]int, 0)
+	right := make([]int, 0)
+	for i := 1; i < len(arr); i++ {
+		if arr[i] < pivot {
+			left = append(left, arr[i])
+		} else {
+			right = append(right, arr[i])
+		}
+	}
+	return append(append(QuickSort(left), pivot), QuickSort(right)...)
+}
+
+func BinarySearch(arr []int, value int) (key int) {
+	left := 0
+	right := len(arr) - 1
+	for left <= right {
+		mid := (left + right) / 2
+		if arr[mid] == value {
+			return mid
+		} else if arr[mid] < value {
+			left = mid + 1
+		} else {
+			right = mid - 1
+		}
+	}
+	return -1
 }
 
 // Main entry point
