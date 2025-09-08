@@ -88,7 +88,13 @@ func main() {
 	//mainDataStructures()
 	//mainPractice()
 	//HelloWorld()
-	mainRestfulAPI()
+	//mainRestfulAPI()
+	maingRPC01()
+}
+
+func maingRPC01() {
+	fmt.Println(colors.YellowBoldText("gRPC zero to hero!"))
+
 }
 
 func mainRestfulAPI() {
