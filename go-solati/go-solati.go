@@ -2084,7 +2084,7 @@ func mainX() {
 	mainPractice()
 	//HelloWorld()
 	mainRestfulAPI()
-	maingRPC01()
+	maingRPC()
 }
 
 func PrintTitle() {
