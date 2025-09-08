@@ -95,6 +95,7 @@ func HelloWorld() {
 	fmt.Println("Hello, World!")
 	fmt.Println("Hello, World Again!")
 
+	fmt.Println(http.MethodGet)
 	arr := []int{10, 300, 1, 20, 100, 200, 100, 2, 11, 12, 500, 9}
 	newArr := Sort(arr)
 	fmt.Println(newArr)
@@ -111,11 +112,15 @@ func Sort[T int](arr []T) []T {
 	return arr
 }
 
-func BinarySearch(arr []int, value int) (index int) {
-	// Implement BinarySearch here:
+func zz() {
 	fmt.Println()
+	fmt.Println(
+		"Hello, World",
+	)
+	fmt.Println("")
 	fmt.Println()
-	return -1
+	os.Remove("file-name.txt")
+	fmt.Println()
 }
 
 func mainRestfulAPI() {
