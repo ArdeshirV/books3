@@ -4,12 +4,12 @@ package main
 
 import (
 	"archive/zip"
-  grpc01 "github.com/ArdeshirV/book/go-solati"
-	"google.golang.org/grpc"
 	"bufio"
 	"bytes"
 	"container/list"
 	"context"
+	"google.golang.org/grpc"
+	grpc01 "grpc/github.com/ArdeshirV/book/go-solati"
 	"log"
 	"reflect"
 	"slices"
@@ -98,6 +98,7 @@ func main() {
 
 func maingRPC01() {
 	fmt.Println(colors.YellowBoldText("gRPC zero to hero!"))
+	grpc01.Run()
 
 }
 
