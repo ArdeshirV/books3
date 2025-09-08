@@ -1,5 +1,6 @@
-// go-solati.go: My practices about "The Go programming language reference by Solati"
 package main
+
+// go-solati.go: My practices about "The Go programming language reference by Solati"
 
 import (
 	"archive/zip"
@@ -12,7 +13,7 @@ import (
 	"slices"
 	"strconv"
 	"sync/atomic"
-	"weak"
+	//"weak"
 
 	//"strconv"
 
@@ -96,6 +97,11 @@ func main() {
 func maingRPC01() {
 	fmt.Println(colors.YellowBoldText("gRPC zero to hero!"))
 	fmt.Println("This text is dark blue")
+	fmt.Println("Hello, World!")
+}
+
+func BinarySearch(arr []int, value int) (key int) {
+	return -1
 }
 
 func mainRestfulAPI() {
@@ -113,7 +119,10 @@ func RESTfulAPIs04() {
 	fmt.Printf("\n  %s %s\n\n",
 		colors.MagentaBoldText("Server running at "),
 		colors.BlueBoldText(address))
-	http.ListenAndServe(":"+port, nil)
+	err := http.ListenAndServe(":"+port, nil)
+	if err != nil {
+		panic(err)
+	}
 }
 
 var users = []User{
@@ -138,7 +147,10 @@ func universalHandler(w http.ResponseWriter, r *http.Request) {
 
 func getUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(users)
+	err := json.NewEncoder(w).Encode(users)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func createUser(w http.ResponseWriter, r *http.Request) {
@@ -149,7 +161,9 @@ func createUser(w http.ResponseWriter, r *http.Request) {
 	}
 	users = append(users, u)
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(u)
+	if err := json.NewEncoder(w).Encode(u); err != nil {
+		panic(err)
+	}
 }
 
 func updateUser(w http.ResponseWriter, r *http.Request) {
