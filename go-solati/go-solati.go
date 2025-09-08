@@ -97,6 +97,10 @@ func maingRPC01() {
 
 }
 
+func BinarySearch(arr []int, value int) (key int) {
+
+}
+
 func mainRestfulAPI() {
 	fmt.Println(colors.YellowBoldText("RESTful APIs in Go"))
 	//RESTfulAPIs01()
