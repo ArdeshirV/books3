@@ -96,6 +96,30 @@ func main() {
 	//HelloWorld()
 	//mainRestfulAPI()
 	maingRPC()
+	redisSandBox()
+}
+
+func redisSandBox() {
+	fmt.Println(colors.YellowBoldText("Redis SandBox"))
+	redisSandBox01()
+}
+
+func redisSandBox01() {
+	//rdb := redis.NewClient(&redis.Options{
+	//	Addr:     "localhost:6379",
+	//	Password: "", // no password set
+	//	DB:       0,  // use default DB
+	//})
+	//ctx := context.Background()
+	//err := rdb.Set(ctx, "key", "value", 0).Err()
+	//if err != nil {
+	//	panic(err)
+	//}
+	//val, err := rdb.Get(ctx, "key").Result()
+	//if err != nil {
+	//	panic(err)
+	//}
+	//fmt.Println("key", val)
 }
 
 func maingRPC() {
@@ -2030,7 +2054,7 @@ func BinarySearch(arr []int, value int) (key int) {
 }
 
 // Main entry point
-func mainX() {
+func mainXX() {
 	defer func() {
 		//waiteForEnter()
 		fmt.Print(NORMAL)
