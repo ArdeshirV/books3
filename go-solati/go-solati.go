@@ -129,8 +129,6 @@ func maingRPC() {
 }
 
 func gRPC01() {
-	fmt.Println()
-
 	const address = ":50051"
 	lis, err := net.Listen("tcp", address)
 	if err != nil {
