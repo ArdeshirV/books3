@@ -155,6 +155,7 @@ func mainRestfulAPI() {
 	//RESTfulAPIs01()
 	//RESTfulAPIs02()
 	//RESTfulAPIs03()
+	fmt.Println("0b100000000 =", 0b100000000)
 	RESTfulAPIs04()
 }
 
