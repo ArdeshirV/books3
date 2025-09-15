@@ -624,20 +624,31 @@ func oneError() error {
 	return nil
 }
 
-func oneResultAndError() (any, error) {
-	return nil, nil
+func oneResultAndError() (string, error) {
+	return "", nil
 }
 
 func impllementErrorChekers() {
 	res := "result"
 
-	oneError()
+	if err := oneError(); err != nil {
+		panic(err)
+	}
 
-	oneResultAndError()
+	if _, err := oneResultAndError(); err != nil {
+		panic(err)
+	}
 
-	oneResultAndError()
+	res, err := oneResultAndError()
+	if err != nil {
+		panic(err)
+	}
 
-	oneError()
+	defer func() {
+		if err := oneError(); err != nil {
+			panic(err)
+		}
+	}()
 
 	fmt.Println(res)
 }
