@@ -2133,7 +2133,6 @@ func mainXX() {
 	mainLog()
 	mainPlugin()
 	mainZipArchive()
-	mainNext()
 	mainDesignPattern()
 	mainDataStructures()
 	mainPractice()
