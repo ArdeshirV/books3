@@ -135,6 +135,7 @@ func gRPC01() {
 		panic(err)
 	}
 	s := grpc.NewServer()
+
 	grpc01.RegisterGreeterServer(s, &server{})
 	log.Printf("Server listening on " + address)
 	if err := s.Serve(lis); err != nil {
