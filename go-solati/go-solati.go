@@ -587,9 +587,6 @@ type E struct {
 	D D
 }
 
-func mainNext() {
-}
-
 func mainZipArchive() {
 	homeDir := os.Getenv("HOME")
 	zipFileName := homeDir + "/Documents/Downloads/go.zip"
