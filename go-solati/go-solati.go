@@ -629,6 +629,13 @@ func oneResultAndError() (any, error) {
 }
 
 func impllementErrorChekers() {
+	oneError()
+
+	oneResultAndError()
+
+	oneResultAndError()
+
+	oneError()
 
 	fmt.Println(res)
 }
