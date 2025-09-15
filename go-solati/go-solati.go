@@ -629,6 +629,8 @@ func oneResultAndError() (any, error) {
 }
 
 func impllementErrorChekers() {
+	res := "result"
+
 	oneError()
 
 	oneResultAndError()
