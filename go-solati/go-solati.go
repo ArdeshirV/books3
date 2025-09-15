@@ -129,8 +129,6 @@ func maingRPC() {
 }
 
 func gRPC01() {
-	fmt.Println()
-
 	const address = ":50051"
 	lis, err := net.Listen("tcp", address)
 	if err != nil {
@@ -157,6 +155,7 @@ func mainRestfulAPI() {
 	//RESTfulAPIs01()
 	//RESTfulAPIs02()
 	//RESTfulAPIs03()
+	fmt.Println("0b100000000 =", 0b100000000)
 	RESTfulAPIs04()
 }
 
@@ -615,7 +614,56 @@ func mainZipArchive() {
 	if err != nil {
 		panic(err)
 	}
-	file.Write([]byte("This is a sample text file that is created in Go programming language"))
+	text := "This is a sample text file that is created in Go programming language"
+	if _, err := file.Write([]byte(text)); err != nil {
+		panic(err)
+	}
+}
+
+func oneError() error {
+	return nil
+}
+
+func oneResultAndError() (any, error) {
+	return nil, nil
+}
+
+func impllementErrorChekers() {
+	if err := oneError(); err != nil {
+		panic(err)
+	}
+
+	if err := oneError(); err != nil {
+		panic(err)
+	}
+
+	if _, err := oneResultAndError(); err != nil {
+		panic(err)
+	}
+
+	if _, err := oneResultAndError(); err != nil {
+		panic(err)
+	}
+
+	res, err := oneResultAndError()
+	if err != nil {
+		panic(err)
+	}
+
+	res, err = oneResultAndError()
+	if err != nil {
+		panic(err)
+	}
+
+	defer func() {
+		if err := oneError(); err != nil {
+			panic(err)
+		}
+	}()
+
+	oneError()
+
+	fmt.Println(res)
 }
 
 func mainPlugin() {
