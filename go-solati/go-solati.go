@@ -629,7 +629,7 @@ func oneResultAndError() (string, error) {
 }
 
 func impllementErrorChekers() {
-	res := "result"
+	var res string
 
 	if err := oneError(); err != nil {
 		panic(err)
