@@ -129,18 +129,23 @@ func maingRPC() {
 }
 
 func gRPC01() {
+	fmt.Println()
+
 	const address = ":50051"
 	lis, err := net.Listen("tcp", address)
 	if err != nil {
 		panic(err)
 	}
 	s := grpc.NewServer()
-
 	grpc01.RegisterGreeterServer(s, &server{})
 	log.Printf("Server listening on " + address)
 	if err := s.Serve(lis); err != nil {
 		panic(err)
 	}
+
+    if err := s.Serve(lis); err != nil {
+        panic(err)
+    }
 }
 
 type server struct {
@@ -156,7 +161,6 @@ func mainRestfulAPI() {
 	//RESTfulAPIs01()
 	//RESTfulAPIs02()
 	//RESTfulAPIs03()
-	fmt.Println("0b100000000 =", 0b100000000)
 	RESTfulAPIs04()
 }
 
@@ -588,6 +592,9 @@ type E struct {
 	D D
 }
 
+func mainNext() {
+}
+
 func mainZipArchive() {
 	homeDir := os.Getenv("HOME")
 	zipFileName := homeDir + "/Documents/Downloads/go.zip"
@@ -612,6 +619,7 @@ func mainZipArchive() {
 	if err != nil {
 		panic(err)
 	}
+<<<<<<< Updated upstream
 	text := "This is a sample text file that is created in Go programming language"
 	if _, err := file.Write([]byte(text)); err != nil {
 		panic(err)
@@ -663,6 +671,9 @@ func impllementErrorChekers() {
 	}()
 
 	fmt.Println(res)
+=======
+	file.Write([]byte("This is a sample text file that is created in Go programming language"))
+>>>>>>> Stashed changes
 }
 
 func mainPlugin() {
@@ -2148,6 +2159,7 @@ func mainXX() {
 	mainLog()
 	mainPlugin()
 	mainZipArchive()
+	mainNext()
 	mainDesignPattern()
 	mainDataStructures()
 	mainPractice()
