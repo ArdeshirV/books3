@@ -2179,6 +2179,7 @@ func mainXX() {
 	mainPlugin()
 	mainZipArchive()
 	mainNext()
+	impllementErrorChekers()
 	mainDesignPattern()
 	mainDataStructures()
 	mainPractice()
