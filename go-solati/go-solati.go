@@ -163,7 +163,7 @@ func mainConversion() {
 		West
 		South
 	)
-	var x Direction = East
+	var x = East
 	fmt.Println(North, East, West, South, x)
 }
 
