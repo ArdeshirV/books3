@@ -139,6 +139,12 @@ func mainConversion() {
 	}
 	fmt.Printf("strPI: %q -> %f\n", strPI, resf)
 
+	const (
+		x1 = 1 << iota * iota * iota
+		x2
+		x3
+	)
+	fmt.Println(x1, x2, x3)
 }
 
 func redisSandBox() {
