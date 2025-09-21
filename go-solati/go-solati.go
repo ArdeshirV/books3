@@ -164,9 +164,15 @@ func gRPC01() {
 		panic(err)
 	}
 
+<<<<<<< Updated upstream
 	if err := s.Serve(lis); err != nil {
 		panic(err)
 	}
+=======
+    if err := s.Serve(lis); err != nil {
+        panic(err)
+    }
+>>>>>>> Stashed changes
 }
 
 type server struct {
@@ -640,6 +646,7 @@ func mainZipArchive() {
 	if err != nil {
 		panic(err)
 	}
+<<<<<<< Updated upstream
 
 	text := "This is a sample text file that is created in Go programming language"
 	if _, err := file.Write([]byte(text)); err != nil {
@@ -718,6 +725,9 @@ func impllementErrorChekers() {
 	}()
 
 	fmt.Println(res)
+=======
+	file.Write([]byte("This is a sample text file that is created in Go programming language"))
+>>>>>>> Stashed changes
 }
 
 func mainPlugin() {
@@ -2199,7 +2209,10 @@ func mainXX() {
 	mainPlugin()
 	mainZipArchive()
 	mainNext()
+<<<<<<< Updated upstream
 	impllementErrorChekers()
+=======
+>>>>>>> Stashed changes
 	mainDesignPattern()
 	mainDataStructures()
 	mainPractice()
