@@ -124,6 +124,21 @@ func mainConversion() {
 	} else {
 		fmt.Printf("string: %q -> int: %d\n", s, n)
 	}
+
+	strint := "32458792385"
+	res, err := strconv.Atoi(strint)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("strint: %q -> %d\n", strint, res)
+
+	strPI := "3.14159265"
+	resf, err := strconv.ParseFloat(strPI, 64)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("strPI: %q -> %f\n", strPI, resf)
+
 }
 
 func redisSandBox() {
