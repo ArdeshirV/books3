@@ -155,6 +155,15 @@ func mainConversion() {
 		PB
 	)
 	fmt.Println(B, KB, MB, GB, TB, PB)
+
+	type Direction int
+	const (
+		North Direction = iota + 1
+		East
+		West
+		South
+	)
+	fmt.Println(North, East, West, South)
 }
 
 func redisSandBox() {
