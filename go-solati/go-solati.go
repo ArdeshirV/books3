@@ -163,7 +163,8 @@ func mainConversion() {
 		West
 		South
 	)
-	fmt.Println(North, East, West, South)
+	var x Direction = East
+	fmt.Println(North, East, West, South, x)
 }
 
 func redisSandBox() {
