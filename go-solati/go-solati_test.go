@@ -24,14 +24,14 @@ func TestTestSub(t *testing.T) {
 
 func BenchmarkTestAdd(b *testing.B) {
 	x, y := 10, 20
-	for range b.N {
+	for b.Loop() {
 		testAdd(x, y)
 	}
 }
 
 func TestBinarySearch(t *testing.T) {
 	tests := []struct {
-		name string // description of this test case
+		name string // Description of this test case
 		// Named input parameters for target function.
 		arr   []int
 		value int
@@ -42,7 +42,7 @@ func TestBinarySearch(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := BinarySearch(tt.arr, tt.value)
-			// TODO: update the condition below to compare got with tt.want.
+			// TODO: Update the condition below to compare got with 'tt.want'.
 			if true {
 				t.Errorf("BinarySearch() = %v, want %v", got, tt.want)
 			}
