@@ -8,12 +8,13 @@ import (
 	"bytes"
 	"container/list"
 	"context"
-	grpc01 "github.com/ArdeshirV/book/go-solati/grpc01"
 	"log"
 	"reflect"
 	"slices"
 	"strconv"
 	"sync/atomic"
+
+	grpc01 "github.com/ArdeshirV/book/go-solati/grpc01"
 
 	"google.golang.org/grpc"
 
@@ -114,8 +115,9 @@ func mainConversion() {
 
 	s := "123"
 	n, err := strconv.Atoi(s)
+	fmt.Printf("strconv.IntSize: %d\n", strconv.IntSize)
 	if err != nil {
-		fmt.Printf("string: %q -> int: %d\n", s, n)
+		fmt.Fprintln(os.Stderr, err)
 	} else {
 		fmt.Printf("string: %q -> int: %d\n", s, n)
 	}
@@ -160,6 +162,10 @@ func gRPC01() {
 	s := grpc.NewServer()
 	grpc01.RegisterGreeterServer(s, &server{})
 	log.Printf("Server listening on " + address)
+	if err := s.Serve(lis); err != nil {
+		panic(err)
+	}
+
 	if err := s.Serve(lis); err != nil {
 		panic(err)
 	}
