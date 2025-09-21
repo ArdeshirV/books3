@@ -152,9 +152,9 @@ func mainConversion() {
 		MB
 		GB
 		TB
-		ZB
+		PB
 	)
-	fmt.Println(B, KB, MB, GB, TB, ZB)
+	fmt.Println(B, KB, MB, GB, TB, PB)
 }
 
 func redisSandBox() {
