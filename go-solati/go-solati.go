@@ -110,7 +110,7 @@ func mainConversion() {
 
 	var pi = 3.14159265
 	var intn = int(pi)
-	fmt.Printf("float64: %.2f -> int: %d\n", pi, intn)
+	fmt.Printf("float64: %f -> int: %d\n", pi, intn)
 
 	s := "123"
 	n, err := strconv.Atoi(s)
