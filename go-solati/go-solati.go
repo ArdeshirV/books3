@@ -96,8 +96,13 @@ func main() {
 	//HelloWorld()
 	//mainGetinRestfulAPI()
 	//maingRPC()
-	mainRestfulAPI()
-	redisSandBox()
+	//mainRestfulAPI()
+	//redisSandBox()
+	mainConversion()
+}
+
+func mainConversion() {
+	fmt.Println(colors.YellowBoldText("Conversions"))
 }
 
 func redisSandBox() {
