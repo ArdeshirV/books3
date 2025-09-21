@@ -103,6 +103,10 @@ func main() {
 
 func mainConversion() {
 	fmt.Println(colors.YellowBoldText("Conversions"))
+
+	var intx = 42
+	var floaty = float64(42)
+	fmt.Println("int: %d -> float64: %.2f\n", intx, floaty)
 }
 
 func redisSandBox() {
