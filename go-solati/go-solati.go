@@ -111,6 +111,14 @@ func mainConversion() {
 	var pi float64 = 3.14159265
 	var intn = int(pi)
 	fmt.Printf("float64: %.2f -> int: %d\n", pi, intn)
+
+	s := "123"
+	n, err := strconv.Atoi(s)
+	if err != nil {
+		fmt.Printf("string: %q -> int: %d\n", s, n)
+	} else {
+		fmt.Printf("string: %q -> int: %d\n", s, n)
+	}
 }
 
 func redisSandBox() {
