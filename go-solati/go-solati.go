@@ -145,6 +145,16 @@ func mainConversion() {
 		x3
 	)
 	fmt.Println(x1, x2, x3)
+
+	const (
+		B = 1 << (10 * iota)
+		KB
+		MB
+		GB
+		TB
+		ZB
+	)
+	fmt.Println(B, KB, MB, GB, TB, ZB)
 }
 
 func redisSandBox() {
