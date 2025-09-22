@@ -165,6 +165,12 @@ func mainConversion() {
 	)
 	var x = East
 	fmt.Println(North, East, West, South, x)
+
+	strstring := "Some string goes here"
+	fmt.Printf("%s = %x\n", strstring, strstring)
+
+	char := 'ش'
+	fmt.Printf("%c = %U\n", char, char)
 }
 
 func redisSandBox() {
