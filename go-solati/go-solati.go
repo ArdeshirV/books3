@@ -170,7 +170,7 @@ func mainConversion() {
 	fmt.Printf("%s = %x\n", strstring, strstring)
 
 	char := 'ش'
-	fmt.Printf("%c = %U, %t, %p\n", char, char, true, &char)
+	fmt.Printf("%c = %U, %t, %p, %#v\n", char, char, true, &char, char)
 }
 
 func redisSandBox() {
