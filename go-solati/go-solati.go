@@ -214,7 +214,7 @@ func gRPC01() {
 	log.Printf("Server listening on " + address)
 	if err := s.Serve(lis); err != nil {
 		panic(err)
-        
+
 	}
 }
 
@@ -693,7 +693,7 @@ func mainZipArchive() {
 	text := "This is a sample text file that is created in Go programming language"
 	if _, err := file.Write([]byte(text)); err != nil {
 		panic(err)
-      
+
 	}
 }
 
