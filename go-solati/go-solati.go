@@ -105,11 +105,11 @@ func main() {
 func mainConversion() {
 	fmt.Println(colors.YellowBoldText("Conversions"))
 
-	var intx int = 42
+	var intx = 42
 	var floaty = float64(42)
 	fmt.Printf("int: %d -> float64: %.2f\n", intx, floaty)
 
-	var pi float64 = 3.14159265
+	var pi = 3.14159265
 	var intn = int(pi)
 	fmt.Printf("float64: %f -> int: %d\n", pi, intn)
 
