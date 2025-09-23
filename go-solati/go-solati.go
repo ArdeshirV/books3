@@ -168,8 +168,8 @@ func mainConversion() {
 	var x = East
 	fmt.Println(North, East, West, South, x)
 
-	strstring := "Some string goes here"
-	fmt.Printf("%s = %x\n", strstring, strstring)
+	strString := "Some string goes here"
+	fmt.Printf("%s = %x\n", strString, strString)
 
 	char := 'ش'
 	fmt.Printf("%c = %U, %t, %p, %#v\n", char, char, true, &char, char)
