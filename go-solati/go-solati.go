@@ -171,6 +171,18 @@ func mainConversion() {
 
 	char := 'ش'
 	fmt.Printf("%c = %U, %t, %p, %#v\n", char, char, true, &char, char)
+
+	fmt.Println(strstring, ReverseString(strstring))
+}
+
+func ReverseString(text string) string {
+	var sb strings.Builder
+	runes := []rune(text)
+	length := len(runes)
+	for i := range length {
+		sb.WriteRune(runes[length-i-1])
+	}
+	return sb.String()
 }
 
 func redisSandBox() {
