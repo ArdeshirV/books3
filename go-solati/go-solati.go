@@ -177,6 +177,12 @@ func mainConversion() {
 	fmt.Println(mr.Intn(100+1), mr.Float64())
 	fmt.Println(mr.Perm(10), mr.Perm(5))
 
+	for i := 1; i <= 10; i++ {
+		for j := 1; j <= 10; j++ {
+			fmt.Printf("%3d", i*j)
+		}
+		fmt.Println()
+	}
 }
 
 func redisSandBox() {
