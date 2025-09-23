@@ -171,18 +171,6 @@ func mainConversion() {
 
 	char := 'ش'
 	fmt.Printf("%c = %U, %t, %p, %#v\n", char, char, true, &char, char)
-
-	fmt.Println(strstring, ReverseString(strstring))
-}
-
-func ReverseString(text string) string {
-	var sb strings.Builder
-	runes := []rune(text)
-	length := len(runes)
-	for i := range length {
-		sb.WriteRune(runes[length-i-1])
-	}
-	return sb.String()
 }
 
 func redisSandBox() {
@@ -226,13 +214,6 @@ func gRPC01() {
 	log.Printf("Server listening on " + address)
 	if err := s.Serve(lis); err != nil {
 		panic(err)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 	}
 }
 
@@ -711,7 +692,6 @@ func mainZipArchive() {
 	text := "This is a sample text file that is created in Go programming language"
 	if _, err := file.Write([]byte(text)); err != nil {
 		panic(err)
-
 	}
 }
 
