@@ -176,6 +176,7 @@ func mainConversion() {
 
 	fmt.Println(mr.Intn(100+1), mr.Float64())
 	fmt.Println(mr.Perm(10))
+	fmt.Println()
 }
 
 func redisSandBox() {
