@@ -31,34 +31,19 @@ func BenchmarkTestAdd(b *testing.B) {
 
 func TestBinarySearch(t *testing.T) {
 	tests := []struct {
-		name string // Description of this test case
-		// Named input parameters for target function.
+		name  string // Description of this test case
 		arr   []int
 		value int
 		want  int
 	}{
-		// TODO: Add test cases.
+		{"test", []int{1, 2, 3, 10, 12, 33, -1}, 10, 3},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := BinarySearch(tt.arr, tt.value)
-			// TODO: Update the condition below to compare got with 'tt.want'.
-			if true {
+			if got != tt.want {
 				t.Errorf("BinarySearch() = %v, want %v", got, tt.want)
 			}
-		})
-	}
-}
-
-func Test_mainConversion(t *testing.T) {
-	tests := []struct {
-		name string // description of this test case
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			mainConversion()
 		})
 	}
 }
