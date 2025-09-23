@@ -175,7 +175,7 @@ func mainConversion() {
 	fmt.Printf("%c = %U, %t, %p, %#v\n", char, char, true, &char, char)
 
 	fmt.Println(mr.Intn(100+1), mr.Float64())
-	fmt.Println(mr.Perm(10))
+	fmt.Println(mr.Perm(10), mr.Perm(5))
 }
 
 func redisSandBox() {
