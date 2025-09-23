@@ -226,7 +226,10 @@ func gRPC01() {
 	log.Printf("Server listening on " + address)
 	if err := s.Serve(lis); err != nil {
 		panic(err)
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 	}
 }
 
