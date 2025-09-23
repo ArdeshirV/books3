@@ -269,7 +269,7 @@ func universalHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func getUsers(w http.ResponseWriter, _ *http.Request) {
+func getUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	err := json.NewEncoder(w).Encode(users)
 	if err != nil {
@@ -404,13 +404,13 @@ func handler02(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func getUsersZ(w http.ResponseWriter, _ *http.Request) {
+func getUsersZ(w http.ResponseWriter, r *http.Request) {
 	if _, err := fmt.Fprintln(w, "GET /users - return list of all users"); err != nil {
 		panic(err)
 	}
 }
 
-func createUserZ(w http.ResponseWriter, _ *http.Request) {
+func createUserZ(w http.ResponseWriter, r *http.Request) {
 	if _, err := fmt.Fprintln(w, "POST /users - Create a new user"); err != nil {
 		panic(err)
 	}
@@ -426,7 +426,7 @@ func RESTfulAPIs01() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	if _, err := fmt.Fprintln(w, "Hello, REST API in Go!"); err != nil {
+	if err := fmt.Fprintln(w, "Hello, REST API in Go!"); err != nil {
 		panic(err)
 	}
 }
