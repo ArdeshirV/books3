@@ -227,7 +227,10 @@ func gRPC01() {
 	if err := s.Serve(lis); err != nil {
 		panic(err)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 	}
