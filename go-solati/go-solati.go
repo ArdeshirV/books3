@@ -8,7 +8,9 @@ import (
 	"bytes"
 	"container/list"
 	"context"
+	//cr "crypto/rand"
 	"log"
+	mr "math/rand"
 	"reflect"
 	"slices"
 	"strconv"
@@ -171,6 +173,8 @@ func mainConversion() {
 
 	char := 'ش'
 	fmt.Printf("%c = %U, %t, %p, %#v\n", char, char, true, &char, char)
+
+	fmt.Println(mr.Intn(100+1), mr.Float64())
 }
 
 func redisSandBox() {
