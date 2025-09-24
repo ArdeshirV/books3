@@ -218,7 +218,6 @@ func GetPrimeNumbers(count int) []int {
 			}
 		}
 		if prime {
-			fmt.Print(i, ", ")
 			primes = append(primes, i)
 		}
 	}
