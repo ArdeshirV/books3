@@ -204,11 +204,11 @@ func mainConversion() {
 }
 
 func GetPrimeNumbers(count int) []int {
-	primes := make([]int, count)
+	primes := make([]int, 0, count)
 	if count <= 0 {
 		return primes
 	}
-	primes[0] = 2
+	primes = append(primes, 2)
 	for i := 3; len(primes) < count; i++ {
 		prime := true
 		for _, value := range primes {
@@ -218,6 +218,7 @@ func GetPrimeNumbers(count int) []int {
 			}
 		}
 		if prime {
+			fmt.Print(i, ", ")
 			primes = append(primes, i)
 		}
 	}
