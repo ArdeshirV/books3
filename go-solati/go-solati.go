@@ -199,6 +199,29 @@ func mainConversion() {
 		}
 	}
 	fmt.Println(primes)
+
+	fmt.Println(GetPrimeNumbers(10))
+}
+
+func GetPrimeNumbers(count int) []int {
+	primes := make([]int, count)
+	if count <= 0 {
+		return primes
+	}
+	primes[0] = 2
+	for i := 3; len(primes) < count; i++ {
+		prime := true
+		for _, value := range primes {
+			if i%value == 0 {
+				prime = false
+				break
+			}
+		}
+		if prime {
+			primes = append(primes, i)
+		}
+	}
+	return primes
 }
 
 func redisSandBox() {
