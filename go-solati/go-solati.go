@@ -107,9 +107,9 @@ func main() {
 func mainConversion() {
 	fmt.Println(colors.YellowBoldText("Conversions"))
 
-	var intx = 42
+	var into = 42
 	var floaty = float64(42)
-	fmt.Printf("int: %d -> float64: %.2f\n", intx, floaty)
+	fmt.Printf("int: %d -> float64: %.2f\n", into, floaty)
 
 	var pi = 3.14159265
 	var intn = int(pi)
@@ -119,7 +119,7 @@ func mainConversion() {
 	n, err := strconv.Atoi(s)
 	fmt.Printf("strconv.IntSize: %d\n", strconv.IntSize)
 	for i := 2; i <= 36; i++ {
-		fmt.Printf("123[%d] = %s\n", i, strconv.FormatInt(int64(intx), i))
+		fmt.Printf("123[%d] = %s\n", i, strconv.FormatInt(int64(into), i))
 	}
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
@@ -127,19 +127,19 @@ func mainConversion() {
 		fmt.Printf("string: %q -> int: %d\n", s, n)
 	}
 
-	strint := "32458792385"
-	res, err := strconv.Atoi(strint)
+	str_int := "32458792385"
+	res, err := strconv.Atoi(str_int)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("strint: %q -> %d\n", strint, res)
+	fmt.Printf("str_int: %q -> %d\n", str_int, res)
 
 	strPI := "3.14159265"
-	resf, err := strconv.ParseFloat(strPI, 64)
+	resFloat, err := strconv.ParseFloat(strPI, 64)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("strPI: %q -> %f\n", strPI, resf)
+	fmt.Printf("strPI: %q -> %f\n", strPI, resFloat)
 
 	const (
 		x1 = 1 << iota * iota * iota
@@ -168,7 +168,7 @@ func mainConversion() {
 	var x = East
 	fmt.Println(North, East, West, South, x)
 
-	strString := "Some string goes here"
+	const strString = "Some string goes here"
 	fmt.Printf("%s = %x\n", strString, strString)
 
 	char := 'ش'
@@ -200,7 +200,7 @@ func mainConversion() {
 	}
 	fmt.Println(primes)
 
-	fmt.Println(GetPrimeNumbers(20))
+	fmt.Println(GetPrimeNumbers(10))
 }
 
 func GetPrimeNumbers(count int) []int {
@@ -844,7 +844,7 @@ func mainLog() {
 			time.Sleep(time.Second * 1)
 		}
 	}()
-	//log.Panic("Fatal error occured")
+	//log.Panic("Fatal error occurred")
 }
 
 func mainContext() {
