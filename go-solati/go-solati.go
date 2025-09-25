@@ -199,7 +199,6 @@ func mainConversion() {
 		}
 	}
 	fmt.Println(primes)
-
 	fmt.Println(GetPrimeNumbers(20))
 }
 
