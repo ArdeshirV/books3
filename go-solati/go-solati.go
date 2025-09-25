@@ -200,7 +200,7 @@ func mainConversion() {
 	}
 	fmt.Println(primes)
 
-	fmt.Println(GetPrimeNumbers(10))
+	fmt.Println(GetPrimeNumbers(20))
 }
 
 func GetPrimeNumbers(count int) []int {
