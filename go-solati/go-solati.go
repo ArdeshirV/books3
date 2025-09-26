@@ -204,10 +204,10 @@ func mainConversion() {
 }
 
 func GetPrimeNumbers(count int) []int {
-	primes := make([]int, 0, count)
 	if count <= 0 {
-		return primes
+		return []int{}
 	}
+	primes := make([]int, 0, count)
 	primes = append(primes, 2)
 	for i := 3; len(primes) < count; i++ {
 		prime := true
