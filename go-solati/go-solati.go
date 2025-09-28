@@ -185,21 +185,6 @@ func mainConversion() {
 		fmt.Println()
 	}
 
-	primes := []int{}
-	primes = append(primes, 2)
-	for i := 3; i < 100; i++ {
-		prime := true
-		for _, value := range primes {
-			if i%value == 0 {
-				prime = false
-				break
-			}
-		}
-		if prime {
-			primes = append(primes, i)
-		}
-	}
-	fmt.Println(primes)
 	fmt.Println(GetPrimeNumbers(20))
 }
 
