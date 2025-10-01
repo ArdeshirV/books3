@@ -54,13 +54,20 @@ func mainAdvancedErrorHandling() {
 			panic(err)
 		}
 	}()
-	findUser := func(_ int) error {
+	findUser := func() error {
 		return fmt.Errorf("user lookup failed: %w", ErrorNotFound)
 	}
 
-	if err := findUser(10); err != nil {
+	if err := findUser(); err != nil {
 		panic(err)
 	}
+
+	GetData := func() {
+		panic("panic in GetData")
+	}
+
+	err := SafeRun(GetData)
+	fmt.Println(err)
 }
 
 func mainReadLine() {
