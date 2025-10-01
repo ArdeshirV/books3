@@ -27,9 +27,12 @@ func mainAdvancedErrorHandling() {
 	var ErrorNotFound = errors.New("not found")
 	defer func() {
 		if rec := recover(); rec != nil {
-			if errors.Is(rec, ErrorNotFound) {
-				panic(rec)
+			if err, ok := rec.(error); ok {
+				if errors.Is(err, ErrorNotFound) {
+					fmt.Println(Errorf("%v - caught inside func", err))
+				}
 			}
+			panic(rec)
 		}
 	}()
 	findUser := func(id int) error {
