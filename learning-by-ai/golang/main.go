@@ -23,6 +23,21 @@ func main() {
 	mainAdvancedErrorHandling()
 }
 
+func SafeRun(fn func()) (err error) {
+	defer func() {
+		if rec := recover(); rec != nil {
+			switch v := rec.(type) {
+			case error:
+				err = v
+			default:
+				err = fmt.Errorf("%v", v)
+			}
+		}
+	}()
+	fn()
+	return nil
+}
+
 func mainAdvancedErrorHandling() {
 	var ErrorNotFound = errors.New("not found")
 	defer func() {
@@ -30,6 +45,9 @@ func mainAdvancedErrorHandling() {
 			var err error
 			switch v := rec.(type) {
 			case error:
+				if errors.Is(err, ErrorNotFound) {
+
+				}
 				err = v
 			case string:
 				err = errors.New(v)
