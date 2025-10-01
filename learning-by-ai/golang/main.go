@@ -45,9 +45,6 @@ func mainAdvancedErrorHandling() {
 			var err error
 			switch v := rec.(type) {
 			case error:
-				if errors.Is(err, ErrorNotFound) {
-					err = ErrorNotFound
-				}
 				err = v
 			case string:
 				err = errors.New(v)
