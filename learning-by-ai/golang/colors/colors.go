@@ -1,90 +1,190 @@
-package colors
+package main
 
-const (
-	Normal      = "\033[0m"
-	Bold        = "\033[1m"
-  Red         = "\033[0;31m"
-	Teal        = "\033[0;36m"
-	White       = "\033[0;37m"
-	Blue        = "\033[0;34m"
-	Green       = "\033[0;32m"
-	Yellow      = "\033[0;33m"
-	Magenta     = "\033[0;35m"
-  WhiteBold   = "\033[1;0m"
-	RedBold     = "\033[1;31m"
-	BlueBold    = "\033[1;34m"
-	TealBold    = "\033[1;36m"
-	GreenBold   = "\033[1;32m"
-	YellowBold  = "\033[1;33m"
-	MagentaBold = "\033[1;35m"
+import "fmt"
+
+type Color byte
+
+var (
+	colors = []string{
+		"\033[0m",
+		"\033[1m",
+		"\033[0;31m",
+		"\033[0;36m",
+		"\033[0;37m",
+		"\033[0;34m",
+		"\033[0;32m",
+		"\033[0;33m",
+		"\033[0;35m",
+		"\033[1;31m",
+		"\033[1;34m",
+		"\033[1;36m",
+		"\033[1;32m",
+		"\033[1;33m",
+		"\033[1;35m",
+	}
 )
 
+const (
+	Normal      Color = 0
+	Bold        Color = 1
+	WhiteBold   Color = 1
+	Red         Color = 2
+	Teal        Color = 3
+	White       Color = 4
+	Blue        Color = 5
+	Green       Color = 6
+	Yellow      Color = 7
+	Magenta     Color = 8
+	RedBold     Color = 9
+	BlueBold    Color = 10
+	TealBold    Color = 11
+	GreenBold   Color = 12
+	YellowBold  Color = 13
+	MagentaBold Color = 14
+)
+
+var (
+	ColorIn      Color
+	ColorOut     Color
+	ColorPrompt  Color
+	ColorMessage Color
+	ColorResult  Color
+	ColorError   Color
+)
+
+func init() {
+	SetColorsToDefault()
+}
+
+func SetColorsToDefault() {
+	ColorIn = GreenBold
+	ColorOut = YellowBold
+	ColorPrompt = WhiteBold
+	ColorMessage = TealBold
+	ColorResult = MagentaBold
+	ColorError = RedBold
+}
+
+func GetColorValue(color Color) string {
+	return colors[color]
+}
+
 func NormalText(text string) string {
-  return Normal + text + Normal
+	return colors[Normal] + text + colors[Normal]
 }
 
 func WhiteText(text string) string {
-  return NormalText(text)
+	return NormalText(text)
 }
 
 func NormalBoldText(text string) string {
-  return Bold + text + Normal
+	return colors[Bold] + text + colors[Normal]
 }
 
 func WhiteBoldText(text string) string {
-  return NormalBoldText(text)
+	return NormalBoldText(text)
 }
 
 func RedText(text string) string {
-  return RedBold + text + Normal
+	return colors[RedBold] + text + colors[Normal]
 }
 
 func BlueText(text string) string {
-  return Blue + text + Normal
+	return colors[Blue] + text + colors[Normal]
 }
 
 func TealText(text string) string {
-  return Teal + text + Normal
+	return colors[Teal] + text + colors[Normal]
 }
 
 func GreenText(text string) string {
-  return Green + text + Normal
+	return colors[Green] + text + colors[Normal]
 }
 
 func YellowText(text string) string {
-  return Yellow + text + Normal 
+	return colors[Yellow] + text + colors[Normal]
 }
 
 func MagentaText(text string) string {
-  return Magenta + text + Normal 
+	return colors[Magenta] + text + colors[Normal]
 }
 
 func BoldText(text string) string {
-  return Bold + text + Normal 
+	return colors[Bold] + text + colors[Normal]
 }
 
 func RedBoldText(text string) string {
-  return RedBold + text + Normal
+	return colors[RedBold] + text + colors[Normal]
 }
 
 func BlueBoldText(text string) string {
-  return BlueBold + text + Normal
+	return colors[BlueBold] + text + colors[Normal]
 }
 
 func TealBoldText(text string) string {
-  return TealBold + text + Normal
+	return colors[TealBold] + text + colors[Normal]
 }
 
 func GreenBoldText(text string) string {
-  return GreenBold + text + Normal
+	return colors[GreenBold] + text + colors[Normal]
 }
 
 func YellowBoldText(text string) string {
-  return YellowBold + text + Normal 
+	return colors[YellowBold] + text + colors[Normal]
 }
 
 func MagentaBoldText(text string) string {
-  return MagentaBold + text + Normal 
+	return colors[MagentaBold] + text + colors[Normal]
 }
 
+func Prompt(args ...any) string {
+	return colors[ColorPrompt] + fmt.Sprint(args...) + colors[Normal]
+}
 
+func Promptf(format string, args ...any) string {
+	return fmt.Sprintf(colors[ColorPrompt]+format+colors[Normal], args...)
+}
+
+func Out(args ...any) string {
+	return colors[ColorOut] + fmt.Sprint(args...) + colors[Normal]
+}
+
+func Outf(format string, args ...any) string {
+	return fmt.Sprintf(colors[ColorOut]+format+colors[Normal], args...)
+}
+
+func In(args ...any) string {
+	return colors[ColorIn] + fmt.Sprint(args...) + colors[Normal]
+}
+
+func Inf(format string, args ...any) string {
+	return fmt.Sprintf(colors[ColorIn]+format+colors[Normal], args...)
+}
+
+func Message(args ...any) string {
+	return colors[ColorMessage] + fmt.Sprint(args...) + colors[Normal]
+}
+
+func Messagef(format string, args ...any) string {
+	return fmt.Sprintf(colors[ColorMessage]+format+colors[Normal], args...)
+}
+
+func Result(args ...any) string {
+	return colors[ColorResult] + fmt.Sprint(args...) + colors[Normal]
+}
+
+func Resultf(format string, args ...any) string {
+	return fmt.Sprintf(colors[ColorResult]+format+colors[Normal], args...)
+}
+
+func Error(args ...any) string {
+	return colors[ColorError] + fmt.Sprint(args...) + colors[Normal]
+}
+
+func Errorf(format string, args ...any) string {
+	return fmt.Sprintf(colors[ColorError]+format+colors[Normal], args...)
+}
+
+func InputColor() string {
+	return colors[ColorIn]
+}
