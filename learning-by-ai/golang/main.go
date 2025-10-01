@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/ArdeshirV/gocolor"
+	c "github.com/ArdeshirV/gocolor"
 )
 
 func main() {
-	fmt.Println(gocolor.YellowText("Learning Golang by AI "))
+	fmt.Println(c.Prompt("Learning Golang by AI "))
 }
