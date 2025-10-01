@@ -27,15 +27,20 @@ func mainAdvancedErrorHandling() {
 	var ErrorNotFound = errors.New("not found")
 	defer func() {
 		if rec := recover(); rec != nil {
-			if err, ok := rec.(error); ok {
-				if errors.Is(err, ErrorNotFound) {
-					fmt.Println(Errorf("%v - caught inside func", err))
-				}
+			var err error
+			switch v := rec.(type) {
+			case error:
+				err = v
+			case string:
+				err = errors.New(v)
+			default:
+				err = fmt.Errorf("%v", v)
 			}
-			panic(rec)
+			fmt.Println(Errorf("%v - caught inside func", err))
+			panic(err)
 		}
 	}()
-	findUser := func(id int) error {
+	findUser := func(_ int) error {
 		return fmt.Errorf("user lookup failed: %w", ErrorNotFound)
 	}
 
