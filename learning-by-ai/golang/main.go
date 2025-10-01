@@ -39,14 +39,14 @@ func SafeRun(fn func()) (err error) {
 }
 
 func mainAdvancedErrorHandling() {
-	var ErrorNotFound = errors.New("not found")
+	ErrorNotFound := errors.New("not found")
 	defer func() {
 		if rec := recover(); rec != nil {
 			var err error
 			switch v := rec.(type) {
 			case error:
 				if errors.Is(err, ErrorNotFound) {
-
+					err = ErrorNotFound
 				}
 				err = v
 			case string:
@@ -54,7 +54,6 @@ func mainAdvancedErrorHandling() {
 			default:
 				err = fmt.Errorf("%v", v)
 			}
-			fmt.Println(Errorf("%v - caught inside func", err))
 			panic(err)
 		}
 	}()
