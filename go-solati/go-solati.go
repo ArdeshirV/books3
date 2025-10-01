@@ -757,6 +757,7 @@ func mainZipArchive() {
 		panic(err)
 	}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 	text := "This is a sample text file that is created in Go programming language"
 	if _, err := file.Write([]byte(text)); err != nil {
@@ -847,6 +848,9 @@ func impllementErrorChekers() {
 	}()
 
 	fmt.Println(res)
+=======
+	file.Write([]byte("This is a sample text file that is created in Go programming language"))
+>>>>>>> Stashed changes
 =======
 	file.Write([]byte("This is a sample text file that is created in Go programming language"))
 >>>>>>> Stashed changes
