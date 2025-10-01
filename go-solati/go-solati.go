@@ -190,7 +190,10 @@ func mainConversion() {
 	name := ScanLine("Enter your name: ")
 	fmt.Println(name)
 
-	name = ReadLine("Enter your name: ")
+	name, err = ReadLine("Enter your name: ")
+	if err != nil {
+		panic(err)
+	}
 	fmt.Println(name)
 }
 
@@ -203,14 +206,14 @@ func ScanLine(message string) string {
 	return inputLine
 }
 
-func ReadLine(message string) string {
+func ReadLine(message string) (string, error) {
 	fmt.Print(message)
 	reader := bufio.NewReader(os.Stdin)
 	inputString, err := reader.ReadString('\n')
 	if err != nil {
-		log.Fatal(err)
+		return "", err
 	}
-	return strings.TrimSuffix(inputString, "\n")
+	return strings.TrimSuffix(inputString, "\n"), nil
 }
 
 func GetPrimeNumbers(count int) []int {
@@ -783,7 +786,8 @@ func impllementErrorChekers() {
 		panic(err)
 	}
 
-	if _, err := oneResultAndError(); err != nil {
+	res, err := oneResultAndError()
+	if err != nil {
 		panic(err)
 	}
 
@@ -809,7 +813,7 @@ func impllementErrorChekers() {
 		panic(err)
 	}
 
-	res, err := oneResultAndError()
+	res, err = oneResultAndError()
 	if err != nil {
 		panic(err)
 	}
@@ -823,6 +827,17 @@ func impllementErrorChekers() {
 			panic(err)
 		}
 	}()
+
+	defer func() {
+		if err := oneError(); err != nil {
+			panic(err)
+		}
+	}()
+
+	res, err = oneResultAndError()
+	if err != nil {
+		panic(err)
+	}
 
 	defer func() {
 		if err := oneError(); err != nil {
