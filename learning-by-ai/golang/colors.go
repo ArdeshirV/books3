@@ -1,0 +1,1 @@
+/home/asohishn/Documents/Projects/Go/my-libraries/gocolor/colors.go
