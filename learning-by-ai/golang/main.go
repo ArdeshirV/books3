@@ -19,7 +19,26 @@ func main() {
 
 	fmt.Println(Message("Learning Golang by AI "))
 	//mainDivide()
-	mainReadLine()
+	//mainReadLine()
+	mainAdvancedErrorHandling()
+}
+
+func mainAdvancedErrorHandling() {
+	var ErrorNotFound = errors.New("not found")
+	defer func() {
+		if rec := recover(); rec != nil {
+			if errors.Is(rec, ErrorNotFound) {
+				panic(rec)
+			}
+		}
+	}()
+	findUser := func(id int) error {
+		return fmt.Errorf("user lookup failed: %w", ErrorNotFound)
+	}
+
+	if err := findUser(10); err != nil {
+		panic(err)
+	}
 }
 
 func mainReadLine() {
