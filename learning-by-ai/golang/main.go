@@ -27,7 +27,7 @@ func mainReadLine() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(Outf("Hello dear %s\n", name))
+	fmt.Print(Outf("Hello dear %s\n", name))
 }
 
 func ReadLineX(message string) (line string, err error) {
