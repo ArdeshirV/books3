@@ -186,6 +186,31 @@ func mainConversion() {
 	}
 
 	fmt.Println(GetPrimeNumbers(20))
+
+	name := ScanLine("Enter your name: ")
+	fmt.Println(name)
+
+	name = ReadLine("Enter your name: ")
+	fmt.Println(name)
+}
+
+func ScanLine(message string) string {
+	var inputLine string
+	fmt.Print(message)
+	if scanner := bufio.NewScanner(os.Stdin); scanner.Scan() {
+		inputLine = scanner.Text()
+	}
+	return inputLine
+}
+
+func ReadLine(message string) string {
+	fmt.Print(message)
+	reader := bufio.NewReader(os.Stdin)
+	inputString, err := reader.ReadString('\n')
+	if err != nil {
+		log.Fatal(err)
+	}
+	return strings.TrimSuffix(inputString, "\n")
 }
 
 func GetPrimeNumbers(count int) []int {
