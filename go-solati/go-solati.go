@@ -190,16 +190,8 @@ func mainConversion() {
 	//name := ScanLine("Enter your name: ")
 	//fmt.Println(name)
 
-<<<<<<< HEAD
 	//name = ReadLine("Enter your name: ")
 	//fmt.Println(name)
-=======
-	name, err = ReadLine("Enter your name: ")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(name)
->>>>>>> f1fc4423f70abd7256341c6426f90da85ebccd58
 }
 
 func ScanLine(message string) string {
