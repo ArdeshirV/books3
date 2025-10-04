@@ -187,11 +187,11 @@ func mainConversion() {
 
 	fmt.Println(GetPrimeNumbers(20))
 
-	name := ScanLine("Enter your name: ")
-	fmt.Println(name)
+	//name := ScanLine("Enter your name: ")
+	//fmt.Println(name)
 
-	name = ReadLine("Enter your name: ")
-	fmt.Println(name)
+	//name = ReadLine("Enter your name: ")
+	//fmt.Println(name)
 }
 
 func ScanLine(message string) string {
