@@ -190,8 +190,16 @@ func mainConversion() {
 	//name := ScanLine("Enter your name: ")
 	//fmt.Println(name)
 
+<<<<<<< HEAD
 	//name = ReadLine("Enter your name: ")
 	//fmt.Println(name)
+=======
+	name, err = ReadLine("Enter your name: ")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(name)
+>>>>>>> f1fc4423f70abd7256341c6426f90da85ebccd58
 }
 
 func ScanLine(message string) string {
@@ -203,14 +211,14 @@ func ScanLine(message string) string {
 	return inputLine
 }
 
-func ReadLine(message string) string {
+func ReadLine(message string) (string, error) {
 	fmt.Print(message)
 	reader := bufio.NewReader(os.Stdin)
 	inputString, err := reader.ReadString('\n')
 	if err != nil {
-		log.Fatal(err)
+		return "", err
 	}
-	return strings.TrimSuffix(inputString, "\n")
+	return strings.TrimSuffix(inputString, "\n"), nil
 }
 
 func GetPrimeNumbers(count int) []int {
@@ -273,6 +281,10 @@ func gRPC01() {
 	s := grpc.NewServer()
 	grpc01.RegisterGreeterServer(s, &server{})
 	log.Printf("Server listening on " + address)
+	if err := s.Serve(lis); err != nil {
+		panic(err)
+	}
+
 	if err := s.Serve(lis); err != nil {
 		panic(err)
 	}
@@ -779,7 +791,8 @@ func impllementErrorChekers() {
 		panic(err)
 	}
 
-	if _, err := oneResultAndError(); err != nil {
+	res, err := oneResultAndError()
+	if err != nil {
 		panic(err)
 	}
 
@@ -805,7 +818,7 @@ func impllementErrorChekers() {
 		panic(err)
 	}
 
-	res, err := oneResultAndError()
+	res, err = oneResultAndError()
 	if err != nil {
 		panic(err)
 	}
@@ -819,6 +832,17 @@ func impllementErrorChekers() {
 			panic(err)
 		}
 	}()
+
+	defer func() {
+		if err := oneError(); err != nil {
+			panic(err)
+		}
+	}()
+
+	res, err = oneResultAndError()
+	if err != nil {
+		panic(err)
+	}
 
 	defer func() {
 		if err := oneError(); err != nil {
