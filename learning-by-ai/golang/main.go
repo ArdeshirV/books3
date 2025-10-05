@@ -19,7 +19,7 @@ func main() {
 
 	fmt.Println(Message("Message: Learning Golang by AI "))
 	name, _ := ReadLine("Enter your name: ")
-	fmt.Println(Out("Out: Hello dear " + name + "!"))
+	fmt.Println(Out("Out: Hello dear " + In(name) + "!"))
 	fmt.Println(Prompt("Prompt: This is a Prompt"))
 	//mainDivide()
 	//mainReadLine()
