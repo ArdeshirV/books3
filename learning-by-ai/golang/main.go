@@ -18,6 +18,11 @@ func main() {
 	}()
 
 	fmt.Println(Message("Learning Golang by AI "))
+	name, err := ReadLine("Enter your name: ")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(Out("Hello " + In(name)))
 	//mainDivide()
 	//mainReadLine()
 	mainAdvancedErrorHandling()
