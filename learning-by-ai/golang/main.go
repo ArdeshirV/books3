@@ -22,7 +22,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(Out("Hello " + In(name)))
+	fmt.Println(Out("Hello dear " + In(name) + "!"))
 	//mainDivide()
 	//mainReadLine()
 	mainAdvancedErrorHandling()
