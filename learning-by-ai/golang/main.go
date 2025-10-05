@@ -17,12 +17,10 @@ func main() {
 		fmt.Print(NormalText(""))
 	}()
 
-	fmt.Println(Message("Learning Golang by AI "))
-	name, err := ReadLine("Enter your name: ")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(Out("Hello dear " + In(name) + "!"))
+	fmt.Println(Message("Message: Learning Golang by AI "))
+	name, _ := ReadLine("Enter your name: ")
+	fmt.Println(Out("Out: Hello dear " + name + "!"))
+	fmt.Println(Prompt("Prompt: This is a Prompt"))
 	//mainDivide()
 	//mainReadLine()
 	mainAdvancedErrorHandling()
