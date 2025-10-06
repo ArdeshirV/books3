@@ -25,6 +25,7 @@ func main() {
 	//mainDivide()
 	//mainReadLine()
 	mainAdvancedErrorHandling()
+	fmt.Println(Message("Message: Done!"))
 }
 
 func SafeRun(fn func()) (err error) {
