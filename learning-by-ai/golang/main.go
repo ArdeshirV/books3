@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 	//c "github.com/ArdeshirV/gocolor"
 )
@@ -14,12 +15,27 @@ func main() {
 		if rec := recover(); rec != nil {
 			fmt.Println(Error(rec))
 		}
-		fmt.Print(NormalText(""))
+	}()
+
+	defer func() {
+		age, err := ReadLine("How old are you? ")
+		if err != nil {
+			panic(err)
+		}
+		age = strings.TrimSpace(age)
+		ageInt, err := strconv.ParseInt(age, 10, 0)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Print(Outf("You are %s years old\n", age))
+		fmt.Print(Out(fmt.Sprintf("You are %d years old\n", ageInt)))
 	}()
 
 	fmt.Println(Message("Message: Learning Golang by AI "))
 	fmt.Println(Prompt("Prompt: This is a Prompt"))
 	name, _ := ReadLine("Enter your name: ")
+	name = strings.TrimSpace(name)
+	name = strings.Join(strings.Fields(name), " ")
 	fmt.Println(Out("Out: Hello dear " + name + "!"))
 	fmt.Println(Result("Result: The result color"))
 	//mainDivide()
