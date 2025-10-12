@@ -31,10 +31,10 @@ func main() {
 		fmt.Print(Out(fmt.Sprintf("You are %d years old\n", ageInt)))
 	}()
 
-	fmt.Println(Message("Message: Learning Golang by AI "))
+	fmt.Println(Message("Message: Practice Golang by AI "))
 	fmt.Println(Prompt("Prompt: This is a Prompt"))
 	name, _ := ReadLine("Enter your name: ")
-	name = strings.TrimSpace(name)
+	//name = strings.TrimSpace(name)
 	name = strings.Join(strings.Fields(name), " ")
 	fmt.Println(Out("Out: Hello dear " + name + "!"))
 	fmt.Println(Result("Result: The result color"))
