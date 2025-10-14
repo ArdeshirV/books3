@@ -187,8 +187,8 @@ func mainConversion() {
 
 	fmt.Println(GetPrimeNumbers(20))
 
-	name := ScanLine(colors.YellowBoldText("Enter your name: "))
-	fmt.Println(name)
+	//name := ScanLine(colors.YellowBoldText("Enter your name: "))
+	//fmt.Println(name)
 
 	//name = ReadLine("Enter your name: ")
 	//fmt.Println(name)
