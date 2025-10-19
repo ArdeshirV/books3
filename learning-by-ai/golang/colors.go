@@ -1,1 +1,1 @@
-/home/asohishn/Documents/Projects/Go/my-libraries/gocolor/colors.go
+/data/data/com.termux/files/home/r/home/Documents/Projects/Go/my-libraries/gocolor/colors.go
