@@ -17,7 +17,7 @@ func main() {
 		}
 	}()
 
-	defer func() {
+	getAge := func() {
 		age, err := ReadLine("How old are you? ")
 		if err != nil {
 			panic(err)
@@ -29,14 +29,15 @@ func main() {
 		}
 		fmt.Print(Outf("You are %s years old\n", age))
 		fmt.Print(Out(fmt.Sprintf("You are %d years old\n", ageInt)))
-	}()
+	}
 
+	fmt.Printf("getAge = %x\n", getAge)
 	fmt.Println(Message("Message: Practice Golang by AI "))
 	fmt.Println(Prompt("Prompt: This is a Prompt"))
-	name, _ := ReadLine("Enter your name: ")
+	//name, _ := ReadLine("Enter your name: ")
 	//name = strings.TrimSpace(name)
-	name = strings.Join(strings.Fields(name), " ")
-	fmt.Println(Out("Out: Hello dear " + name + "!"))
+	//name = strings.Join(strings.Fields(name), " ")
+	//fmt.Println(Out("Out: Hello dear " + name + "!"))
 	fmt.Println(Result("Result: The result color"))
 	//mainDivide()
 	//mainReadLine()
