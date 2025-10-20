@@ -1,8 +1,11 @@
 package main
 
-//package gocolor
-
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
 
 type Color byte
 
@@ -69,6 +72,16 @@ func SetColorsToDefault() {
 
 func GetColorValue(color Color) string {
 	return colors[color]
+}
+
+func ReadLine(message string) (line string, err error) {
+	defer fmt.Print(GetColorValue(Normal))
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print(GetColorValue(ColorPrompt), message, GetColorValue(ColorIn))
+	if line, err = reader.ReadString('\n'); err != nil {
+		return
+	}
+	return strings.TrimSuffix(line, "\n"), nil
 }
 
 func ColorizeText(text string, color Color) string {
@@ -152,7 +165,14 @@ func Promptf(format string, args ...any) string {
 }
 
 func Out(args ...any) string {
-	return colors[ColorOut] + fmt.Sprint(args...) + colors[Normal]
+	var sb strings.Builder
+	sb.WriteString(colors[ColorOut])
+	for _, arg := range args {
+		sb.WriteString(arg.(string))
+	}
+	sb.WriteString(colors[Normal])
+	//return colors[ColorOut] + fmt.Sprint(args...) + colors[Normal]
+	return sb.String()
 }
 
 func Outf(format string, args ...any) string {
