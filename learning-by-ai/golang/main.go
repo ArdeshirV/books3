@@ -100,7 +100,7 @@ func mainReadLine() {
 	fmt.Print(Outf("Hello dear %s\n", name))
 }
 
-func ReadLine(message string) (line string, err error) {
+func ReadLineX(message string) (line string, err error) {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print(message)
 	if line, err = reader.ReadString('\n'); err != nil {
