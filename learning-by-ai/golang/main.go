@@ -35,6 +35,7 @@ func main() {
 	fmt.Println(Message("Message: Practice Golang by AI "))
 	fmt.Println(Prompt("Prompt: This is a Prompt"))
 	//name, _ := ReadLine("Enter your name: ")
+	fmt.Println("Hello, World!")
 	//name = strings.TrimSpace(name)
 	//name = strings.Join(strings.Fields(name), " ")
 	//fmt.Println(Out("Out: Hello dear " + name + "!"))
