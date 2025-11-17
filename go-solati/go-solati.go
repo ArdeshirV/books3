@@ -192,6 +192,7 @@ func mainConversion() {
 
 	//name = ReadLine("Enter your name: ")
 	//fmt.Println(name)
+	fmt.Println(colors.MagentaBoldText("Result color"))
 }
 
 func ScanLine(message string) string {
