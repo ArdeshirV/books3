@@ -41,8 +41,8 @@ func main() {
 	fmt.Println(Result("Result: The result color"))
 	//mainDivide()
 	//mainReadLine()
-	mainAdvancedErrorHandling()
 	fmt.Println(Message("Message: Done!"))
+	mainAdvancedErrorHandling()
 }
 
 func SafeRun(fn func()) (err error) {
