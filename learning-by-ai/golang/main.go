@@ -39,10 +39,10 @@ func main() {
 	name = strings.Join(strings.Fields(name), " ")
 	fmt.Println(Out("Out: Hello dear " + name + "!"))
 	fmt.Println(Result("Result: The result color"))
-	//mainDivide()
 	//mainReadLine()
 	fmt.Println(Message("Message: Done!"))
-	mainAdvancedErrorHandling()
+	//mainAdvancedErrorHandling()
+	mainDivide()
 }
 
 func SafeRun(fn func()) (err error) {
