@@ -282,9 +282,15 @@ func gRPC01() {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	if err := s.Serve(lis); err != nil {
 		panic(err)
 	}
+=======
+    if err := s.Serve(lis); err != nil {
+        panic(err)
+    }
+>>>>>>> Stashed changes
 =======
     if err := s.Serve(lis); err != nil {
         panic(err)
@@ -776,6 +782,7 @@ func mainZipArchive() {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 	text := "This is a sample text file that is created in Go programming language"
 	if _, err := file.Write([]byte(text)); err != nil {
@@ -866,6 +873,9 @@ func impllementErrorChekers() {
 	}()
 
 	fmt.Println(res)
+=======
+	file.Write([]byte("This is a sample text file that is created in Go programming language"))
+>>>>>>> Stashed changes
 =======
 	file.Write([]byte("This is a sample text file that is created in Go programming language"))
 >>>>>>> Stashed changes
