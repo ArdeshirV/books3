@@ -111,7 +111,7 @@ func mainConversion() {
 	var into = 42
 	var floaty = float64(42)
 	fmt.Printf("int: %d -> float64: %.2f\n", into, floaty)
-
+	
 	var pi = 3.14159265
 	var intn = int(pi)
 	fmt.Printf("float64: %f -> int: %d\n", pi, intn)
@@ -2452,3 +2452,4 @@ const (
 // P55: true || false ==> false
 // P54: a < b, a < b
 // P79: تعریف تابغ به خط فارسی برعکس شده است
+
