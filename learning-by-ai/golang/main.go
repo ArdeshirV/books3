@@ -79,7 +79,7 @@ func mainAdvancedErrorHandling() {
 	findUser := func() error {
 		return fmt.Errorf("user lookup failed: %w", ErrorNotFound)
 	}
-
+    
 	if err := findUser(); err != nil {
 		panic(err)
 	}
