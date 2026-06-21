@@ -119,7 +119,7 @@ func mainConversion() {
 	s := "123"
 	n, err := strconv.Atoi(s)
 	fmt.Printf("strconv.IntSize: %d\n", strconv.IntSize)
-	for i := 2; i <= 36; i++ {
+	for i := 2; i <= 3; i++ {
 		fmt.Printf("123[%d] = %s\n", i, strconv.FormatInt(int64(into), i))
 	}
 	if err != nil {
