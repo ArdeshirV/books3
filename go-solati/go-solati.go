@@ -111,7 +111,7 @@ func mainConversion() {
 	var into = 42
 	var floaty = float64(42)
 	fmt.Printf("int: %d -> float64: %.2f\n", into, floaty)
-	
+
 	var pi = 3.14159265
 	var intn = int(pi)
 	fmt.Printf("float64: %f -> int: %d\n", pi, intn)
@@ -282,30 +282,30 @@ func gRPC01() {
 	if err := s.Serve(lis); err != nil {
 		panic(err)
 	}
-    
-    if err := s.Serve(lis); err != nil {
-        panic(err)
-    }
 
-    if err := s.Serve(lis); err != nil {
-        panic(err)
-    }
+	if err := s.Serve(lis); err != nil {
+		panic(err)
+	}
 
-    if err := s.Serve(lis); err != nil {
-        panic(err)
-    }
+	if err := s.Serve(lis); err != nil {
+		panic(err)
+	}
 
-    if err := s.Serve(lis); err != nil {
-        panic(err)
-    }
-    
-    if err := s.Serve(lis); err != nil {
-        panic(err)
-    }
+	if err := s.Serve(lis); err != nil {
+		panic(err)
+	}
 
-    if err := s.Serve(lis); err != nil {
-        panic(err)
-    }
+	if err := s.Serve(lis); err != nil {
+		panic(err)
+	}
+
+	if err := s.Serve(lis); err != nil {
+		panic(err)
+	}
+
+	if err := s.Serve(lis); err != nil {
+		panic(err)
+	}
 }
 
 type server struct {
@@ -1984,6 +1984,10 @@ func zebel() {
 	fmt.Println("Duration: ", time.Since(now2))
 }
 
+func add(a, b int) int {
+	return
+}
+
 func addAllOne(a []int) int {
 	total := 0
 	t := 0
@@ -2044,6 +2048,7 @@ func rev(text string) string {
 
 func EvalMathematicExpr(expr string) float64 {
 	fmt.Print("Hello")
+	integrate()
 	return 0.0
 }
 
@@ -2377,4 +2382,3 @@ const (
 // P55: true || false ==> false
 // P54: a < b, a < b
 // P79: تعریف تابغ به خط فارسی برعکس شده است
-
