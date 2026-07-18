@@ -1857,7 +1857,7 @@ func mainChannels2() {
 			time.Sleep(time.Millisecond * 100)
 			c <- i
 		}
-	}()
+	}()ssaa
 	for data := range c {
 		fmt.Print(data, " ")
 		if data == 0 {
