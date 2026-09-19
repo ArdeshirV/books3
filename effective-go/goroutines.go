@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func main() {
+func mainX() {
 	stepSix()
 }
 
@@ -42,5 +42,3 @@ func stepSix() {
 }
 
 
-main: sk-e2cfca84fb1c41e5a4e0058150ad7379
-sandbox: sk-0aeaaeda37e5417ebc48744e2f51ff0e

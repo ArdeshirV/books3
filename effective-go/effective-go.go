@@ -85,7 +85,7 @@ const templateStr = `
 </html>
 `
 
-func stepSix() {
+func stepSix2() {
 	printTitle("stepSix\n")
 
 	time.Sleep(time.Millisecond * 100)
